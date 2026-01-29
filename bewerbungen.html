@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bewerbungen - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+</head>
+<body class="admin-page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-small">
+                <span>⚙️</span>
+                <span>Team Panel</span>
+            </div>
+            <button class="sidebar-toggle">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" data-role="all">
+                <span class="icon">📊</span>
+                <span class="label">Dashboard</span>
+            </a>
+            
+            <div class="nav-section">
+                <h3>Verwaltung</h3>
+                
+                <a href="bewerbungen.html" class="nav-item active" data-role="admin,teamleiter">
+                    <span class="icon">📝</span>
+                    <span class="label">Bewerbungen</span>
+                </a>
+                
+                <a href="tickets.html" class="nav-item" data-role="all">
+                    <span class="icon">🎫</span>
+                    <span class="label">Tickets</span>
+                </a>
+                
+                <a href="aufgaben.html" class="nav-item" data-role="all">
+                    <span class="icon">✓</span>
+                    <span class="label">Aufgaben</span>
+                </a>
+                
+                <a href="projekte.html" class="nav-item" data-role="all">
+                    <span class="icon">🗂️</span>
+                    <span class="label">Projekte</span>
+                </a>
+            </div>
+
+            <div class="nav-section" id="admin-section" data-role="admin">
+                <h3>Admin</h3>
+                
+                <a href="benutzer.html" class="nav-item" data-role="admin">
+                    <span class="icon">👥</span>
+                    <span class="label">Benutzer</span>
+                </a>
+                
+                <a href="rollen.html" class="nav-item" data-role="admin">
+                    <span class="icon">🔑</span>
+                    <span class="label">Rollen & Rechte</span>
+                </a>
+                
+                <a href="einstellungen.html" class="nav-item" data-role="admin">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Einstellungen</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Weitere</h3>
+                
+                <a href="index.html" class="nav-item" data-role="all">
+                    <span class="icon">🏠</span>
+                    <span class="label">Startseite</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <div class="user-name">Benutzer</div>
+                    <div class="user-role">Nicht angemeldet</div>
+                </div>
+            </div>
+            <button class="btn btn-logout" id="logoutBtn">🚪 Logout</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1>Bewerbungsverwaltung</h1>
+            <div class="topbar-right">
+                <select id="statusFilter" class="filter-select">
+                    <option value="">Alle Status</option>
+                    <option value="neu">Neu</option>
+                    <option value="prüfung">In Prüfung</option>
+                    <option value="angenommen">Angenommen</option>
+                    <option value="abgelehnt">Abgelehnt</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <!-- STATS -->
+            <section class="stats-grid mini">
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Neue Bewerbungen</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">In Prüfung</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Angenommen</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Abgelehnt</div>
+                </div>
+            </section>
+
+            <!-- BEWERBUNGSLIST COMPUTER SERVICE AG -->
+            <section class="panel">
+                <h2 style="color: #0066cc; margin-bottom: 1.5rem;">💻 Computer Service AG</h2>
+                <div class="table-responsive">
+                    <table class="admin-table" id="table-computer">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Klasse</th>
+                                <th>Status</th>
+                                <th>Eingereicht</th>
+                                <th>Aktion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- BEWERBUNGSLIST TECHNIK AG -->
+            <section class="panel" style="margin-top: 3rem;">
+                <h2 style="color: #ff9800; margin-bottom: 1.5rem;">🎬 Technik AG</h2>
+                <div class="table-responsive">
+                    <table class="admin-table" id="table-technik">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Klasse</th>
+                                <th>Status</th>
+                                <th>Eingereicht</th>
+                                <th>Aktion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- BEWERBUNGSFORMULAR (MODAL) -->
+            <div id="bewerbungsModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Bewerbungsdetails</h2>
+                        <button class="modal-close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input type="text" readonly id="modalName">
+                        </div>
+                        <div class="form-group">
+                            <label>E-Mail:</label>
+                            <input type="email" readonly id="modalEmail">
+                        </div>
+                        <div class="form-group">
+                            <label>Klasse:</label>
+                            <input type="text" readonly id="modalKlasse">
+                        </div>
+                        <div class="form-group">
+                            <label>Wunsch-AG:</label>
+                            <input type="text" readonly id="modalAG">
+                        </div>
+                        <div class="form-group">
+                            <label>Motivation:</label>
+                            <textarea readonly id="modalMotivation" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Vorkenntnisse:</label>
+                            <textarea readonly id="modalVorkenntnisse" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Admin-Kommentare:</label>
+                            <textarea id="modalKommentare" placeholder="Interne Notizen..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Einwilligungen (Info)</label>
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="modalConsentData" name="modalConsentData">
+                                <label for="modalConsentData">Einwilligung zur Speicherung/Verarbeitung personenbezogener Daten (vom Bewerber bestätigt)</label>
+                            </div>
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="modalConsentMedia" name="modalConsentMedia">
+                                <label for="modalConsentMedia">Foto-/Videoeinwilligung vorhanden</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Status:</label>
+                            <select id="modalStatus">
+                                <option value="neu">🔴 Neu</option>
+                                <option value="prüfung">🟡 In Prüfung</option>
+                                <option value="angenommen">🟢 Angenommen</option>
+                                <option value="abgelehnt">⚫ Abgelehnt</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" id="modalClose">Abbrechen</button>
+                        <button class="btn btn-primary" id="modalSave">Speichern & E-Mail senden</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script>
+    // ============================
+    // BEWERBUNGSVERWALTUNG
+    // ============================
+
+    protectPage(['admin', 'teamleiter']);
+    updateUserUI();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const modalCloseBtn = document.querySelector('.modal-close');
+        const bewerbungsModal = document.getElementById('bewerbungsModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalSave = document.getElementById('modalSave');
+
+        // Sidebar Toggle
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                sidebar.classList.toggle('collapsed');
+            });
+        }
+
+        // Close sidebar on click outside
+        document.addEventListener('click', function(e) {
+            if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                sidebar.classList.remove('collapsed');
+            }
+        });
+
+        // Logout button
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                if (confirm('Möchten Sie sich wirklich abmelden?')) {
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+
+        // Modal close button
+        if (modalCloseBtn) {
+            modalCloseBtn.addEventListener('click', function() {
+                bewerbungsModal.style.display = 'none';
+            });
+        }
+
+        // Filter functionality
+        const statusFilter = document.getElementById('statusFilter');
+        
+        if (statusFilter) {
+            statusFilter.addEventListener('change', filterBewerbungen);
+        }
+
+        // Modal functionality
+        if (modalClose) {
+            modalClose.addEventListener('click', function() {
+                bewerbungsModal.style.display = 'none';
+            });
+        }
+
+        if (modalSave) {
+            modalSave.addEventListener('click', function() {
+                alert('✓ Bewerbung aktualisiert und E-Mail versendet!');
+                bewerbungsModal.style.display = 'none';
+            });
+        }
+
+        // Close modal on outside click
+        bewerbungsModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+
+        // Alle Bewerbungen laden
+        loadBewerbungen();
+    });
+
+    function filterBewerbungen() {
+        const statusFilter = document.getElementById('statusFilter')?.value || '';
+        const computerRows = document.querySelectorAll('#table-computer tbody tr');
+        const technikRows = document.querySelectorAll('#table-technik tbody tr');
+
+        [...computerRows, ...technikRows].forEach(row => {
+            let visible = true;
+
+            if (statusFilter) {
+                const status = row.querySelector('.badge')?.textContent.toLowerCase() || '';
+                visible = status.includes(statusFilter.toLowerCase());
+            }
+
+            row.style.display = visible ? '' : 'none';
+        });
+    }
+
+    function loadBewerbungen() {
+        const buttons = document.querySelectorAll('.btn-view, .btn-edit');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const row = this.closest('tr');
+                const name = row.querySelector('strong').textContent;
+                document.getElementById('bewerbungsModal').style.display = 'flex';
+            });
+        });
+    }
+
+    function updateUserUI() {
+        // Update user info in sidebar
+        const userNameEl = document.querySelector('.user-name');
+        const userRoleEl = document.querySelector('.user-role');
+        
+        if (userNameEl && userRoleEl) {
+            const userJSON = localStorage.getItem('currentUser');
+            const userData = userJSON ? JSON.parse(userJSON) : null;
+            if (userData) {
+                userNameEl.textContent = userData.name || 'Benutzer';
+                userRoleEl.textContent = userData.role === 'admin' ? '👑 Administrator' : userData.role === 'teamleiter' ? '👔 Teamleiter' : userData.role === 'support' ? '🛠️ Support' : userData.role === 'technik' ? '⚡ Technik' : '👤 Benutzer';
+            } else {
+                userNameEl.textContent = 'Benutzer';
+                userRoleEl.textContent = '👤 Nicht angemeldet';
+            }
+        }
+
+        // Show/hide admin section based on role
+        const adminSection = document.getElementById('admin-section');
+        const userData = JSON.parse(localStorage.getItem('user') || '{"role":"user"}');
+        if (adminSection) {
+            adminSection.style.display = userData.role === 'admin' ? 'block' : 'none';
+        }
+    }
+    </script>
+    <script src="js/bewerbungen.js"></script>
+</body>
+</html>
