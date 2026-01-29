@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projekte und Referenzen der AG's">
+    <title>Projekte & Referenzen - AG's der Schule</title>
+    <link rel="stylesheet" href="style.css">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="about.html">Über uns</a></li>
+                    <li><a href="computer-service-ag.html">Computer Service AG</a></li>
+                    <li><a href="technik.html">Technik AG</a></li>
+                    <li><a href="projects.html">Projekte</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="join.html">Mitmachen</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li class="active"><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+                    <li><a href="about.html">Über uns</a></li>
+                    <li><a href="computer-service-ag.html">Computer Service AG</a></li>
+                    <li><a href="technik.html">Technik AG</a></li>
+                    <li class="active"><a href="projects.html">Projekte</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="join.html">Mitmachen</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>🏆 Projekte & Referenzen</h1>
+        <p>Unsere bisherigen Arbeiten und Erfolge</p>
+    </div>
+
+    <div class="container">
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb">
+            <a href="index.html">Startseite</a> / Projekte
+        </div>
+
+        <!-- FILTER -->
+        <section class="content">
+            <h2>Filter nach AG</h2>
+            <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                <button onclick="showAll()" style="padding: 0.5rem 1rem; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; background: white;">Alle anzeigen</button>
+                <button onclick="filterAG('computer')" style="padding: 0.5rem 1rem; border: 1px solid #0066cc; border-radius: 5px; cursor: pointer; background: #e3f2fd; color: #0066cc;">💻 Computer Service</button>
+                <button onclick="filterAG('technik')" style="padding: 0.5rem 1rem; border: 1px solid #ff9800; border-radius: 5px; cursor: pointer; background: #fff3e0; color: #ff9800;">🎬 Technik</button>
+            </div>
+        </section>
+
+        <!-- COMPUTER SERVICE PROJEKTE -->
+        <section class="content" id="computer-projects">
+            <h2>💻 Computer Service AG - Projekte</h2>
+            
+            <!-- Projekt 1 -->
+            <div style="background: white; padding: 2rem; margin-bottom: 1.5rem; border-radius: 10px; border-left: 5px solid #0066cc;">
+                <h3 style="color: #0066cc;">Migration auf neue Schulverwaltungssoftware</h3>
+                <p><strong>Status:</strong> Abgeschlossen | <strong>Zeitraum:</strong> August - September 2024</p>
+                <p><strong>Beschreibung:</strong> Komplette Migration von der alten zu einer neuen Schulverwaltungssoftware. 
+                   Dazu gehörte die Datenmigration, Schulung der Lehrkräfte und umfassender technischer Support.</p>
+                <p><strong>Beteiligte Mitglieder:</strong> 6 Schüler aus der AG</p>
+                <p><strong>Ergebnisse:</strong></p>
+                <ul>
+                    <li>✅ Erfolgreiche Migration ohne Datenverlust</li>
+                    <li>✅ Alle Lehrkräfte geschult und einsatzfähig</li>
+                    <li>✅ 24/7 Support während der Umstellung</li>
+                    <li>✅ Dokumentation für zukünftige Referenz</li>
+                </ul>
+            </div>
+
+            <!-- Projekt 2 -->
+            <div style="background: white; padding: 2rem; margin-bottom: 1.5rem; border-radius: 10px; border-left: 5px solid #0066cc;">
+                <h3 style="color: #0066cc;">Optimierung des Schulnetzwerks</h3>
+                <p><strong>Status:</strong> Laufend | <strong>Zeitraum:</strong> Seit Mai 2024</p>
+                <p><strong>Beschreibung:</strong> Umstrukturierung des Netzwerk-Setups in verschiedenen Klassenzimmern 
+                   für bessere Stabilität und schnellere Datenübertragung.</p>
+                <p><strong>Ergebnisse:</strong></p>
+                <ul>
+                    <li>✅ 20% schnellere Datenübertragung</li>
+                    <li>✅ Reduzierung von Ausfallzeiten um 60%</li>
+                    <li>🔄 Noch 3 weitere Räume geplant</li>
+                </ul>
+            </div>
+
+            <!-- Projekt 3 -->
+            <div style="background: white; padding: 2rem; margin-bottom: 1.5rem; border-radius: 10px; border-left: 5px solid #0066cc;">
+                <h3 style="color: #0066cc;">Aufbau einer Testumgebung</h3>
+                <p><strong>Status:</strong> Abgeschlossen | <strong>Zeitraum:</strong> Juni - Juli 2024</p>
+                <p><strong>Beschreibung:</strong> Erstellung einer virtuellen Testumgebung für die Erprobung neuer 
+                   Software und Systemkonfigurationen, ohne die produktive Infrastruktur zu belasten.</p>
+                <p><strong>Ergebnisse:</strong></p>
+                <ul>
+                    <li>✅ Sichere Test-VM mit 4 verschiedenen Konfigurationen</li>
+                    <li>✅ Reduzierung von Produktionsfehlern um 80%</li>
+                    <li>✅ Spannende Erfahrung mit Virtualisierung</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TECHNIK PROJEKTE -->
+        <section class="content" id="technik-projects">
+            <h2>🎬 Technik AG - Projekte</h2>
+
+            <!-- Projekt 1 -->
+            <div style="background: white; padding: 2rem; margin-bottom: 1.5rem; border-radius: 10px; border-left: 5px solid #ff9800;">
+                <h3 style="color: #ff9800;">🎆 LED-Bühnentechnik Upgrade</h3>
+                <p><strong>Status:</strong> Abgeschlossen | <strong>Zeitraum:</strong> Dezember 2023 - Januar 2024</p>
+                <p><strong>Beschreibung:</strong> Installation moderner LED-Scheinwerfer mit DMX-Steuerung 
+                   in der Schulaula für professionellere Beleuchtung bei Veranstaltungen.</p>
+                <p><strong>Beteiligte Mitglieder:</strong> 8 Schüler + externe Techniker</p>
+                <p><strong>Ergebnisse:</strong></p>
+                <ul>
+                    <li>✅ 40 neue RGB-LED-Scheinwerfer installiert</li>
+                    <li>✅ DMX-Kontrollsystem programmiert und kalibriert</li>
+                    <li>✅ 100+ Schulveranstaltungen mit neuer Technik unterstützt</li>
+                    <li>✅ Schulungen für neue Mitglieder durchgeführt</li>
+                </ul>
+            </div>
+
+            <!-- Projekt 2 -->
+            <div style="background: white; padding: 2rem; margin-bottom: 1.5rem; border-radius: 10px; border-left: 5px solid #ff9800;">
+                <h3 style="color: #ff9800;">🔊 Soundsystem-Upgrade</h3>
+                <p><strong>Status:</strong> Laufend | <strong>Zeitraum:</strong> Seit August 2024</p>
+                <p><strong>Beschreibung:</strong> Modernisierung und Erweiterung der Lautsprecheranlagen 
+                   in der Aula und in mehreren Klassenzimmern.</p>
+                <p><strong>Ergebnisse:</strong></p>
+                <ul>
+                    <li>✅ Neue High-End Lautsprecher in der Aula</li>
+                    <li>✅ Wireless-Mikrofon-System installiert</li>
+                    <li>✅ Testphase mit Schulkonzert erfolgreich</li>
+                    <li>🔄 Weitere Räume in Planung</li>
+                </ul>
+            </div>
+
+            <!-- Projekt 3 -->
+            <div style="background: white; padding: 2rem; margin-bottom: 1.5rem; border-radius: 10px; border-left: 5px solid #ff9800;">
+                <h3 style="color: #ff9800;">🎓 Arduino-Beleuchtungsprojekt</h3>
+                <p><strong>Status:</strong> Abgeschlossen | <strong>Zeitraum:</strong> April - Juni 2024</p>
+                <p><strong>Beschreibung:</strong> Entwicklung eines Arduino-basierten LED-Systems 
+                   mit Farbwechsel und Musiksynchronisation für Schulveranstaltungen.</p>
+                <p><strong>Lernziele:</strong> Programmierung, Elektronik, Kreatives Design</p>
+                <p><strong>Ergebnisse:</strong></p>
+                <ul>
+                    <li>✅ Vollständig funktionierendes LED-Installationssystem</li>
+                    <li>✅ Automatische Musikerkennung und Farbsynchronisation</li>
+                    <li>✅ Auf 3 Schulveranstaltungen erfolgreich genutzt</li>
+                    <li>✅ Quellcode dokumentiert für Nachfolgeprojekte</li>
+                </ul>
+            </div>
+
+            <!-- Projekt 4 -->
+            <div style="background: white; padding: 2rem; margin-bottom: 1.5rem; border-radius: 10px; border-left: 5px solid #ff9800;">
+                <h3 style="color: #ff9800;">📹 Video-Projektor Installation</h3>
+                <p><strong>Status:</strong> Abgeschlossen | <strong>Zeitraum:</strong> März 2024</p>
+                <p><strong>Beschreibung:</strong> Installation und Kalibrierung neuer Beamer 
+                   in Klassenzimmern und Veranstaltungsräumen.</p>
+                <p><strong>Ergebnisse:</strong></p>
+                <ul>
+                    <li>✅ 8 neue Projektoren installiert</li>
+                    <li>✅ Netzwerk-Integration für Fernsteuerung</li>
+                    <li>✅ Lehrerkschulung durchgeführt</li>
+                </ul>
+            </div>
+
+            <!-- Projekt 5 -->
+            <div style="background: white; padding: 2rem; margin-bottom: 1.5rem; border-radius: 10px; border-left: 5px solid #ff9800;">
+                <h3 style="color: #ff9800;">🔧 Reparaturwerkstatt</h3>
+                <p><strong>Status:</strong> Fortlaufend | <strong>Zeitraum:</strong> Das ganze Jahr über</p>
+                <p><strong>Beschreibung:</strong> Reparatur und Instandhaltung aller technischen Geräte 
+                   wie Mikrofone, Lautsprecher, Mischpulte, etc.</p>
+                <p><strong>Statistik 2024:</strong></p>
+                <ul>
+                    <li>✅ 45 Geräte repariert</li>
+                    <li>✅ 60 Wartungen durchgeführt</li>
+                    <li>✅ ~2.000€ an Reparaturkosten gespart</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- VERANSTALTUNGSÜBERSICHT -->
+        <section class="content">
+            <h2>📅 Veranstaltungsübersicht 2024</h2>
+            <table>
+                <tr>
+                    <th>Veranstaltung</th>
+                    <th>Datum</th>
+                    <th>Technik AG</th>
+                    <th>Computer Service AG</th>
+                    <th>Besonderheiten</th>
+                </tr>
+                <tr>
+                    <td>Schulkonzert</td>
+                    <td>15.01.2024</td>
+                    <td>✅</td>
+                    <td>Backup</td>
+                    <td>Neue LED-Scheinwerfer im Einsatz</td>
+                </tr>
+                <tr>
+                    <td>Theater-Aufführung</td>
+                    <td>22.02.2024</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>Video-Projektion, Liveübertragung</td>
+                </tr>
+                <tr>
+                    <td>Schulfest</td>
+                    <td>28.05.2024</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>Außenbühne mit vollem Soundsystem</td>
+                </tr>
+                <tr>
+                    <td>Abschlussfeier</td>
+                    <td>29.06.2024</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>Fotografie, Video, Live-Streaming</td>
+                </tr>
+                <tr>
+                    <td>Sportfest</td>
+                    <td>12.09.2024</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>Moderationsstudio, Ergebnisanzeige</td>
+                </tr>
+            </table>
+
+            <h2 style="margin-top: 2rem;">🎯 Ausblick auf kommende Projekte</h2>
+            <ul>
+                <li>🔄 Netzwerk-Upgrade für das neue Multimedia-Klassenzimmer</li>
+                <li>🔄 Installation eines Live-Streaming-Systems für Schulveranstaltungen</li>
+                <li>🔄 Aufbau einer interaktiven LED-Wall für Präsentationen</li>
+                <li>🔄 Drone-Fotografie für Schulveranstaltungen</li>
+                <li>🔄 Ausbau der Server-Infrastruktur</li>
+            </ul>
+        </section>
+
+        <div style="margin-top: 3rem; padding: 2rem; background: #f0f0f0; border-radius: 10px; text-align: center;">
+            <h3>🚀 Interessiert? Mach mit!</h3>
+            <p>Wenn dir unsere Projekte gefallen und du Teil unseres Teams werden möchtest...</p>
+            <a href="join.html" class="btn btn-primary" style="display: inline-block; margin-top: 1rem;">Jetzt beitreten!</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>🎯 AG's der Schule</h4>
+                <p>Computer Service AG & Technik AG – Zentrale Plattform der Schulwerkstätten</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="about.html">Über uns</a></li>
+                    <li><a href="projects.html">Projekte</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>AG's</h4>
+                <ul>
+                    <li><a href="computer-service-ag.html">Computer Service AG</a></li>
+                    <li><a href="technik.html">Technik AG</a></li>
+                    <li><a href="join.html">Mitmachen</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontakt & Support</h4>
+                <ul>
+                    <li><a href="contact.html">Kontaktformular</a></li>
+                    <li><a href="support.html">Support-Anfrage</a></li>
+                    <li>📍 Schule [Adresse]</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AG's der Schule. Alle Rechte vorbehalten. | <a href="#" style="color: #999;">Datenschutz</a> | <a href="#" style="color: #999;">Impressum</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function filterAG(ag) {
+            const computerProjects = document.getElementById('computer-projects');
+            const technikProjects = document.getElementById('technik-projects');
+            
+            if (ag === 'computer') {
+                computerProjects.style.display = 'block';
+                technikProjects.style.display = 'none';
+            } else if (ag === 'technik') {
+                computerProjects.style.display = 'none';
+                technikProjects.style.display = 'block';
+            }
+        }
+        
+        function showAll() {
+            document.getElementById('computer-projects').style.display = 'block';
+            document.getElementById('technik-projects').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
