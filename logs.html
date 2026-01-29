@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Aktivitäts- & Audit-Logs - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+    <style>
+        .logs-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .logs-header {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logs-header h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        .filter-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-section input,
+        .filter-section select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .filter-section button {
+            padding: 8px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .filter-section button:hover {
+            background: #0056b3;
+        }
+
+        .logs-table {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background: #f5f5f5;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .log-type {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .log-type.login {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .log-type.setup {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .log-type.password {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .log-type.admin {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .log-time {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .log-user {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .stats-box {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .stat-card h3 {
+            margin: 0 0 5px 0;
+            color: #666;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .admin-only {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body class="admin-page">
+    <div class="logs-container">
+        <div class="logs-header">
+            <div>
+                <h1>📋 Aktivitäts- & Audit-Logs</h1>
+                <p style="margin: 5px 0 0 0; color: #666;">Nur für Administratoren zugänglich</p>
+            </div>
+            <button onclick="exportLogs()" class="btn" style="padding: 10px 20px; background: #28a745;">📥 Exportieren</button>
+        </div>
+
+        <div class="admin-only">
+            🔐 <strong>Vertraulich:</strong> Diese Seite ist nur für Administratoren sichtbar. 
+            Alle Aktivitäten werden protokolliert und können nicht gelöscht werden.
+        </div>
+
+        <div class="stats-box">
+            <div class="stat-card">
+                <h3>Heute</h3>
+                <div class="number" id="statToday">0</div>
+                <p style="margin: 5px 0 0 0; color: #999; font-size: 12px;">Einträge</p>
+            </div>
+            <div class="stat-card">
+                <h3>Diese Woche</h3>
+                <div class="number" id="statWeek">0</div>
+                <p style="margin: 5px 0 0 0; color: #999; font-size: 12px;">Einträge</p>
+            </div>
+            <div class="stat-card">
+                <h3>Logins</h3>
+                <div class="number" id="statLogins">0</div>
+                <p style="margin: 5px 0 0 0; color: #999; font-size: 12px;">Gesamt</p>
+            </div>
+            <div class="stat-card">
+                <h3>Benutzer</h3>
+                <div class="number" id="statUsers">0</div>
+                <p style="margin: 5px 0 0 0; color: #999; font-size: 12px;">Aktiv</p>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <input type="text" id="searchInput" placeholder="Nach Benutzer suchen..." style="flex: 1; min-width: 200px;">
+            <select id="filterType">
+                <option value="">Alle Typen</option>
+                <option value="login">Anmeldung</option>
+                <option value="setup">Setup</option>
+                <option value="password">Passwort</option>
+                <option value="admin">Admin-Aktion</option>
+            </select>
+            <select id="filterDate">
+                <option value="">Alle Zeiten</option>
+                <option value="today">Heute</option>
+                <option value="week">Diese Woche</option>
+                <option value="month">Dieser Monat</option>
+            </select>
+            <button onclick="applyFilters()">🔍 Filtern</button>
+            <button onclick="clearFilters()" style="background: #6c757d;">Zurücksetzen</button>
+        </div>
+
+        <div class="logs-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Zeit</th>
+                        <th>Typ</th>
+                        <th>Benutzer</th>
+                        <th>Aktion</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody id="logsBody">
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: #999; padding: 30px;">
+                            Logs werden geladen...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // ============================
+        // ACTIVITY LOGS - ADMIN ONLY
+        // ============================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Prüfe Admin-Berechtigung
+            const user = SessionManager.getCurrentUser();
+            if (!user || user.role !== 'admin') {
+                alert('❌ Zugriff verweigert. Nur Administratoren dürfen diese Seite aufrufen.');
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            console.log('✅ Admin-Zugriff für Logs gewährt:', user.name);
+            loadActivityLogs();
+            updateStats();
+        });
+
+        function loadActivityLogs() {
+            let logs = JSON.parse(localStorage.getItem('activityLogs') || '[]');
+            
+            // Sortiere nach Zeit (neuste zuerst)
+            logs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            const tbody = document.getElementById('logsBody');
+            tbody.innerHTML = '';
+
+            if (logs.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5">
+                            <div class="empty-state">
+                                📭 Keine Aktivitäts-Logs vorhanden
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            logs.forEach(log => {
+                const row = document.createElement('tr');
+                const time = new Date(log.timestamp).toLocaleString('de-DE');
+                
+                row.innerHTML = `
+                    <td class="log-time">${time}</td>
+                    <td><span class="log-type ${log.type}">${getTypeLabel(log.type)}</span></td>
+                    <td class="log-user">${log.user}</td>
+                    <td>${log.action}</td>
+                    <td>${log.details || '-'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function getTypeLabel(type) {
+            const labels = {
+                'login': '🔓 Anmeldung',
+                'setup': '⚙️ Setup',
+                'password': '🔑 Passwort',
+                'admin': '👑 Admin',
+                'email': '📧 E-Mail'
+            };
+            return labels[type] || type;
+        }
+
+        function updateStats() {
+            let logs = JSON.parse(localStorage.getItem('activityLogs') || '[]');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const logsToday = logs.filter(log => new Date(log.timestamp) >= today).length;
+            const logsWeek = logs.filter(log => {
+                const logDate = new Date(log.timestamp);
+                const weekAgo = new Date(today);
+                weekAgo.setDate(weekAgo.getDate() - 7);
+                return logDate >= weekAgo;
+            }).length;
+            const loginLogs = logs.filter(log => log.type === 'login').length;
+            const uniqueUsers = new Set(logs.map(log => log.user)).size;
+
+            document.getElementById('statToday').textContent = logsToday;
+            document.getElementById('statWeek').textContent = logsWeek;
+            document.getElementById('statLogins').textContent = loginLogs;
+            document.getElementById('statUsers').textContent = uniqueUsers;
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filterType = document.getElementById('filterType').value;
+            
+            const rows = document.querySelectorAll('#logsBody tr');
+            rows.forEach(row => {
+                let show = true;
+                if (searchTerm) {
+                    const user = row.cells[2].textContent.toLowerCase();
+                    show = user.includes(searchTerm);
+                }
+                if (filterType && show) {
+                    const type = row.querySelector('.log-type').className.split(' ').pop();
+                    show = type === filterType;
+                }
+                row.style.display = show ? '' : 'none';
+            });
+        }
+
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('filterType').value = '';
+            document.getElementById('filterDate').value = '';
+            loadActivityLogs();
+        }
+
+        function exportLogs() {
+            let logs = JSON.parse(localStorage.getItem('activityLogs') || '[]');
+            const csv = convertToCSV(logs);
+            downloadCSV(csv, 'activity-logs.csv');
+        }
+
+        function convertToCSV(logs) {
+            let csv = 'Zeit,Typ,Benutzer,Aktion,Details\n';
+            logs.forEach(log => {
+                const time = new Date(log.timestamp).toLocaleString('de-DE');
+                csv += `"${time}","${log.type}","${log.user}","${log.action}","${log.details || ''}"\n`;
+            });
+            return csv;
+        }
+
+        function downloadCSV(csv, filename) {
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', filename);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Lade Logs bei Eingabe
+        document.getElementById('searchInput').addEventListener('keyup', applyFilters);
+        document.getElementById('filterType').addEventListener('change', applyFilters);
+    </script>
+</body>
+</html>
