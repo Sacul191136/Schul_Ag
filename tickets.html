@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+</head>
+<body class="admin-page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-small">
+                <span>⚙️</span>
+                <span>Team Panel</span>
+            </div>
+            <button class="sidebar-toggle">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" data-role="all">
+                <span class="icon">📊</span>
+                <span class="label">Dashboard</span>
+            </a>
+            
+            <div class="nav-section">
+                <h3>Verwaltung</h3>
+                
+                <a href="bewerbungen.html" class="nav-item" data-role="admin,teamleiter">
+                    <span class="icon">📝</span>
+                    <span class="label">Bewerbungen</span>
+                </a>
+                
+                <a href="tickets.html" class="nav-item active" data-role="all">
+                    <span class="icon">🎫</span>
+                    <span class="label">Tickets</span>
+                </a>
+                
+                <a href="aufgaben.html" class="nav-item" data-role="all">
+                    <span class="icon">✓</span>
+                    <span class="label">Aufgaben</span>
+                </a>
+                
+                <a href="projekte.html" class="nav-item" data-role="all">
+                    <span class="icon">🗂️</span>
+                    <span class="label">Projekte</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Admin</h3>
+                
+                <a href="benutzer.html" class="nav-item" data-role="admin">
+                    <span class="icon">👥</span>
+                    <span class="label">Benutzer</span>
+                </a>
+                
+                <a href="rollen.html" class="nav-item" data-role="admin">
+                    <span class="icon">🔑</span>
+                    <span class="label">Rollen & Rechte</span>
+                </a>
+                
+                <a href="einstellungen.html" class="nav-item" data-role="admin">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Einstellungen</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Weitere</h3>
+                <a href="index.html" class="nav-item" data-role="all">
+                    <span class="icon">🏠</span>
+                    <span class="label">Startseite</span>
+                </a>
+                <a href="wissensbereich.html" class="nav-item" data-role="all">
+                    <span class="icon">📚</span>
+                    <span class="label">Wissensbereich</span>
+                </a>
+                <a href="benachrichtigungen.html" class="nav-item" data-role="all">
+                    <span class="icon">🔔</span>
+                    <span class="label">Benachrichtigungen</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <span class="avatar">👤</span>
+                <div>
+                    <p class="user-name" id="userNameDisplay">Benutzer</p>
+                    <p class="user-role" id="userRoleDisplay">Rolle</p>
+                </div>
+            </div>
+            <button id="logoutBtn" class="btn btn-small">Abmelden</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1>Support-Ticket Management</h1>
+            <div class="topbar-right">
+                <button id="newTicketBtn" class="btn btn-primary">+ Neues Ticket</button>
+            </div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <!-- FILTER & SUCHE -->
+            <section class="filter-bar">
+                <input type="text" id="searchTickets" placeholder="Nach Titel oder Kategorie suchen...">
+                <select id="statusFilter" class="filter-select">
+                    <option value="">Status: Alle</option>
+                    <option value="offen">Offen</option>
+                    <option value="bearbeitung">In Bearbeitung</option>
+                    <option value="warten">Warten auf Rückmeldung</option>
+                    <option value="erledigt">Erledigt</option>
+                </select>
+                <select id="priorityFilter" class="filter-select">
+                    <option value="">Priorität: Alle</option>
+                    <option value="hoch">🔴 Hoch</option>
+                    <option value="mittel">🟡 Mittel</option>
+                    <option value="niedrig">🟢 Niedrig</option>
+                </select>
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">Kategorie: Alle</option>
+                    <option value="pc">PC / Hardware</option>
+                    <option value="netzwerk">Netzwerk</option>
+                    <option value="event">Veranstaltungstechnik</option>
+                    <option value="software">Software</option>
+                </select>
+            </section>
+
+            <!-- KANBAN VIEW -->
+            <section class="kanban-board">
+                <!-- OFFEN -->
+                <div class="kanban-column">
+                    <div class="column-header">
+                        <h3>Offen (3)</h3>
+                    </div>
+                    <div class="kanban-cards">
+                        <div class="ticket-card status-offen" data-id="001">
+                            <div class="ticket-priority high">🔴</div>
+                            <h4>#001 PC Raum 202 Fehler</h4>
+                            <p class="ticket-description">Monitor funktioniert nicht</p>
+                            <div class="ticket-meta">
+                                <span class="category">PC</span>
+                                <span class="reporter">von Tom</span>
+                            </div>
+                        </div>
+                        <div class="ticket-card status-offen" data-id="004">
+                            <div class="ticket-priority medium">🟡</div>
+                            <h4>#004 Software-Lizenz Anfrage</h4>
+                            <p class="ticket-description">Neue Software wird benötigt</p>
+                            <div class="ticket-meta">
+                                <span class="category">Software</span>
+                                <span class="reporter">von Admin</span>
+                            </div>
+                        </div>
+                        <div class="ticket-card status-offen" data-id="007">
+                            <div class="ticket-priority low">🟢</div>
+                            <h4>#007 Drucker Wartung</h4>
+                            <p class="ticket-description">Regelmäßige Wartung fällig</p>
+                            <div class="ticket-meta">
+                                <span class="category">Hardware</span>
+                                <span class="reporter">von Support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IN BEARBEITUNG -->
+                <div class="kanban-column">
+                    <div class="column-header">
+                        <h3>In Bearbeitung (2)</h3>
+                    </div>
+                    <div class="kanban-cards">
+                        <div class="ticket-card status-bearbeitung" data-id="002">
+                            <div class="ticket-priority high">🔴</div>
+                            <h4>#002 Event-Mikrophone Setup</h4>
+                            <p class="ticket-description">Kalibrierung für Aula</p>
+                            <div class="ticket-meta">
+                                <span class="category">Event</span>
+                                <span class="assignee">→ Sophie</span>
+                            </div>
+                        </div>
+                        <div class="ticket-card status-bearbeitung" data-id="005">
+                            <div class="ticket-priority medium">🟡</div>
+                            <h4>#005 WLAN Ausbau Flur 2</h4>
+                            <p class="ticket-description">Schwaches Signal beheben</p>
+                            <div class="ticket-meta">
+                                <span class="category">Netzwerk</span>
+                                <span class="assignee">→ Lucas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WARTEN -->
+                <div class="kanban-column">
+                    <div class="column-header">
+                        <h3>Warten (1)</h3>
+                    </div>
+                    <div class="kanban-cards">
+                        <div class="ticket-card status-warten" data-id="003">
+                            <div class="ticket-priority medium">🟡</div>
+                            <h4>#003 Reparaturteil bestellen</h4>
+                            <p class="ticket-description">Wartet auf Teilelieferung</p>
+                            <div class="ticket-meta">
+                                <span class="category">Hardware</span>
+                                <span class="status-tag">Wartet auf Teil</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ERLEDIGT -->
+                <div class="kanban-column">
+                    <div class="column-header">
+                        <h3>Erledigt (5)</h3>
+                    </div>
+                    <div class="kanban-cards">
+                        <div class="ticket-card status-erledigt" data-id="006">
+                            <div class="ticket-priority low">🟢</div>
+                            <h4>#006 Benutzer Training</h4>
+                            <p class="ticket-description">Schulung durchgeführt</p>
+                            <div class="ticket-meta">
+                                <span class="category">Training</span>
+                                <span class="completed">✓ Erledigt 25.01</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- NEUES TICKET MODAL -->
+    <div id="ticketModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Neues Ticket erstellen</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="newTicketForm">
+                    <div class="form-group">
+                        <label for="ticketTitle">Titel:</label>
+                        <input type="text" id="ticketTitle" required placeholder="Kurze Beschreibung des Problems">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ticketCategory">Kategorie:</label>
+                        <select id="ticketCategory" required>
+                            <option value="">-- Wählen --</option>
+                            <option value="pc">PC / Hardware</option>
+                            <option value="netzwerk">Netzwerk</option>
+                            <option value="event">Veranstaltungstechnik</option>
+                            <option value="software">Software</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ticketPriority">Priorität:</label>
+                        <select id="ticketPriority" required>
+                            <option value="niedrig">🟢 Niedrig</option>
+                            <option value="mittel">🟡 Mittel</option>
+                            <option value="hoch">🔴 Hoch</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ticketDescription">Beschreibung:</label>
+                        <textarea id="ticketDescription" rows="5" required placeholder="Detaillierte Beschreibung des Problems..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ticketVisible">Sichtbarkeit:</label>
+                        <select id="ticketVisible">
+                            <option value="public">🔓 Öffentlich (Benutzer sieht Updates)</option>
+                            <option value="private">🔒 Intern (Nur Team sieht)</option>
+                        </select>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="ticketConsent" name="ticketConsent" required>
+                        <label for="ticketConsent">Ich bin mit der Verarbeitung meiner Daten zur Bearbeitung dieses Tickets einverstanden *</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="ticketCancel">Abbrechen</button>
+                <button class="btn btn-primary" id="ticketSubmit">Ticket erstellen</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/tickets.js"></script>
+    <script>
+        // Protect page
+        protectPage();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const logoutBtn = document.getElementById('logoutBtn');
+            
+            // Update user info in sidebar
+            updateUserUI();
+
+            // Sidebar toggle
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    sidebar.classList.toggle('active');
+                });
+            }
+
+            // Close sidebar on mobile when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.sidebar') && !e.target.closest('.sidebar-toggle')) {
+                    sidebar.classList.remove('active');
+                }
+            });
+
+            // Logout
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    if (confirm('Möchten Sie sich abmelden?')) {
+                        SessionManager.logout();
+                    }
+                });
+            }
+        });
+
+        // Update sidebar user info
+        function updateUserUI() {
+            const user = SessionManager.getCurrentUser();
+            if (!user) return;
+
+            const userNameDisplay = document.getElementById('userNameDisplay');
+            const userRoleDisplay = document.getElementById('userRoleDisplay');
+            
+            if (userNameDisplay) userNameDisplay.textContent = user.name;
+            if (userRoleDisplay) {
+                const roleLabels = {
+                    'admin': '👑 Administrator',
+                    'teamleiter': '🎯 Teamleiter',
+                    'support': '🛠️ Support',
+                    'technik': '⚡ Technik',
+                    'member': '👤 Mitglied'
+                };
+                userRoleDisplay.textContent = roleLabels[user.role] || user.role;
+            }
+
+            // Show/Hide admin elements based on role
+            const adminSections = document.querySelectorAll('[data-role]');
+            adminSections.forEach(element => {
+                const requiredRoles = element.getAttribute('data-role').split(',').map(r => r.trim());
+                if (requiredRoles.includes(user.role) || requiredRoles.includes('all')) {
+                    element.style.display = '';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
