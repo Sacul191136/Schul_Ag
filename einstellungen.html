@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systemeinstellungen - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+</head>
+<body class="admin-page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-small">
+                <span>⚙️</span>
+                <span>Team Panel</span>
+            </div>
+            <button class="sidebar-toggle">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" data-role="all">
+                <span class="icon">📊</span>
+                <span class="label">Dashboard</span>
+            </a>
+            
+            <div class="nav-section" id="admin-section" data-role="admin">
+                <h3>Admin</h3>
+                
+                <a href="benutzer.html" class="nav-item" data-role="admin">
+                    <span class="icon">👥</span>
+                    <span class="label">Benutzer</span>
+                </a>
+                
+                <a href="rollen.html" class="nav-item" data-role="admin">
+                    <span class="icon">🔑</span>
+                    <span class="label">Rollen & Rechte</span>
+                </a>
+                
+                <a href="einstellungen.html" class="nav-item active" data-role="admin">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Einstellungen</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Weitere</h3>
+                
+                <a href="index.html" class="nav-item" data-role="all">
+                    <span class="icon">🏠</span>
+                    <span class="label">Startseite</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <div class="user-name">Benutzer</div>
+                    <div class="user-role">Nicht angemeldet</div>
+                </div>
+            </div>
+            <button class="btn btn-logout" id="logoutBtn">🚪 Logout</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1>Systemeinstellungen</h1>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <!-- SETTINGS TABS -->
+            <div class="settings-tabs" style="display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid #eee;">
+                <button class="settings-tab active" data-section="general" style="padding: 1rem 0; border: none; background: none; cursor: pointer; font-weight: 600; border-bottom: 3px solid #0066cc;">
+                    Allgemein
+                </button>
+                <button class="settings-tab" data-section="email" style="padding: 1rem 0; border: none; background: none; cursor: pointer; font-weight: 600; color: #999; border-bottom: 3px solid transparent;">
+                    E-Mail
+                </button>
+                <button class="settings-tab" data-section="security" style="padding: 1rem 0; border: none; background: none; cursor: pointer; font-weight: 600; color: #999; border-bottom: 3px solid transparent;">
+                    Sicherheit
+                </button>
+                <button class="settings-tab" data-section="backup" style="padding: 1rem 0; border: none; background: none; cursor: pointer; font-weight: 600; color: #999; border-bottom: 3px solid transparent;">
+                    Backup
+                </button>
+            </div>
+
+            <!-- GENERAL SETTINGS -->
+            <section id="general" class="settings-section panel">
+                <div class="panel-header">
+                    <h3>Allgemeine Einstellungen</h3>
+                </div>
+                <div class="panel-body">
+                    <form id="generalForm">
+                        <div class="form-group">
+                            <label for="schoolName">Schulname:</label>
+                            <input type="text" id="schoolName" value="AG's der Schule">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="siteName">Website-Name:</label>
+                            <input type="text" id="siteName" value="Team-Panel">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adminEmail">Admin E-Mail:</label>
+                                <input type="email" id="adminEmail" value="admin@school.de">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="supportEmail">Support E-Mail:</label>
+                                <input type="email" id="supportEmail" value="support@school.de">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timezone">Zeitzone:</label>
+                            <select id="timezone">
+                                <option selected>Europe/Berlin</option>
+                                <option>Europe/Vienna</option>
+                                <option>Europe/Zurich</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="language">Sprache:</label>
+                            <select id="language">
+                                <option selected>Deutsch (de)</option>
+                                <option>English (en)</option>
+                                <option>Français (fr)</option>
+                            </select>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" style="margin-top: 1rem;">Speichern</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- EMAIL SETTINGS -->
+            <section id="email" class="settings-section panel" style="display: none;">
+                <div class="panel-header">
+                    <h3>E-Mail-Einstellungen</h3>
+                </div>
+                <div class="panel-body">
+                    <form id="emailForm">
+                        <div class="form-group">
+                            <label for="smtpServer">SMTP-Server:</label>
+                            <input type="text" id="smtpServer" placeholder="smtp.example.com">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="smtpPort">SMTP-Port:</label>
+                                <input type="number" id="smtpPort" value="587">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="smtpUser">SMTP-Benutzer:</label>
+                                <input type="text" id="smtpUser">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="smtpPassword">SMTP-Passwort:</label>
+                            <input type="password" id="smtpPassword">
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" checked> TLS Verschlüsselung
+                            </label>
+                        </div>
+
+                        <div style="background: #f9f9f9; padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+                            <h4>E-Mail-Vorlagen:</h4>
+                            <a href="#" style="display: block; margin: 0.5rem 0; color: #0066cc;">🔗 Bewerbungs-Benachrichtigung anpassen</a>
+                            <a href="#" style="display: block; margin: 0.5rem 0; color: #0066cc;">🔗 Ticket-Zuweisung anpassen</a>
+                            <a href="#" style="display: block; margin: 0.5rem 0; color: #0066cc;">🔗 Passwort-Reset anpassen</a>
+                        </div>
+
+                        <button type="button" class="btn btn-primary">Test-E-Mail senden</button>
+                        <button type="button" class="btn btn-secondary" style="margin-left: 0.5rem;">Speichern</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- SECURITY SETTINGS -->
+            <section id="security" class="settings-section panel" style="display: none;">
+                <div class="panel-header">
+                    <h3>Sicherheitseinstellungen</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" checked> Passwort-Hashing (bcrypt)
+                        </label>
+                        <p style="font-size: 0.85rem; color: #666; margin: 0.5rem 0;">Sichere Passwort-Speicherung aktiviert</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" checked> Session-Timeout
+                        </label>
+                        <div style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                            <label for="sessionTimeout">Timeout nach (Minuten):</label>
+                            <input type="number" id="sessionTimeout" value="30" style="width: 100px;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox"> Zwei-Faktor-Authentifizierung (2FA)
+                        </label>
+                        <p style="font-size: 0.85rem; color: #666; margin: 0.5rem 0;">Zusätzliche Sicherheitsebene für Admins</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" checked> IP-Adresse protokollieren
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" checked> Änderungs-Protokoll
+                        </label>
+                        <p style="font-size: 0.85rem; color: #666; margin: 0.5rem 0;">Alle Änderungen werden protokolliert für Audit-Trail</p>
+                    </div>
+
+                    <div style="background: #fff3cd; padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #ffc107;">
+                        <strong>🔒 Sicherheits-Audit:</strong>
+                        <p style="margin: 0.5rem 0;">Letzter Audit: <strong>22.01.2026</strong></p>
+                        <button class="btn btn-small" style="margin-top: 0.5rem;">Neuer Audit durchführen →</button>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" style="margin-top: 1rem;">Speichern</button>
+                </div>
+            </section>
+
+            <!-- BACKUP SETTINGS -->
+            <section id="backup" class="settings-section panel" style="display: none;">
+                <div class="panel-header">
+                    <h3>Backup & Wartung</h3>
+                </div>
+                <div class="panel-body">
+                    <div style="background: #e8f4f8; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <h4 style="margin-top: 0;">💾 Letzte Backups</h4>
+                        <table style="width: 100%; font-size: 0.9rem;">
+                            <tr>
+                                <td>Datenbank</td>
+                                <td style="text-align: right;"><strong>28.01.2026 03:00</strong></td>
+                                <td style="text-align: right; color: #51cf66;">✓ OK</td>
+                            </tr>
+                            <tr>
+                                <td>Dateien</td>
+                                <td style="text-align: right;"><strong>28.01.2026 03:15</strong></td>
+                                <td style="text-align: right; color: #51cf66;">✓ OK</td>
+                            </tr>
+                            <tr>
+                                <td>Konfigurationen</td>
+                                <td style="text-align: right;"><strong>28.01.2026 03:30</strong></td>
+                                <td style="text-align: right; color: #51cf66;">✓ OK</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Backup-Häufigkeit:</label>
+                        <select>
+                            <option>Täglich (empfohlen)</option>
+                            <option>Alle 2 Tage</option>
+                            <option>Wöchentlich</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" checked> Automatische Backups
+                        </label>
+                        <p style="font-size: 0.85rem; color: #666; margin: 0.5rem 0;">Backups täglich um 03:00 Uhr durchgeführt</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Backup-Aufbewahrung:</label>
+                        <select>
+                            <option>30 Tage</option>
+                            <option>60 Tage</option>
+                            <option>90 Tage</option>
+                            <option>1 Jahr</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h4>🚀 Wartungsaufgaben</h4>
+                        <button class="btn btn-secondary" style="display: block; margin-bottom: 0.5rem;">📥 Backup jetzt durchführen</button>
+                        <button class="btn btn-secondary" style="display: block; margin-bottom: 0.5rem;">📤 Backup herunterladen</button>
+                        <button class="btn btn-secondary" style="display: block;">🔧 Datenbank optimieren</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script>
+    // ============================
+    // SYSTEMEINSTELLUNGEN
+    // ============================
+
+    protectPage(['admin']);
+    updateUserUI();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const tabs = document.querySelectorAll('.settings-tab');
+        const sections = document.querySelectorAll('.settings-section');
+
+        // Sidebar Toggle
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                sidebar.classList.toggle('collapsed');
+            });
+        }
+
+        // Close sidebar on click outside
+        document.addEventListener('click', function(e) {
+            if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                sidebar.classList.remove('collapsed');
+            }
+        });
+
+        // Logout button
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                if (confirm('Möchten Sie sich wirklich abmelden?')) {
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+
+        // Tab switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const sectionId = this.getAttribute('data-section');
+                
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.style.color = '#999';
+                    t.style.borderBottomColor = 'transparent';
+                });
+                
+                sections.forEach(s => s.style.display = 'none');
+                
+                this.classList.add('active');
+                this.style.color = '#333';
+                this.style.borderBottomColor = '#0066cc';
+                
+                document.getElementById(sectionId).style.display = 'block';
+            });
+        });
+    });
+
+    function updateUserUI() {
+        // Update user info in sidebar
+        const userNameEl = document.querySelector('.user-name');
+        const userRoleEl = document.querySelector('.user-role');
+        
+        if (userNameEl && userRoleEl) {
+            const userJSON = localStorage.getItem('currentUser');
+            const userData = userJSON ? JSON.parse(userJSON) : null;
+            if (userData) {
+                userNameEl.textContent = userData.name || 'Benutzer';
+                userRoleEl.textContent = userData.role === 'admin' ? '👑 Administrator' : userData.role === 'teamleiter' ? '👔 Teamleiter' : userData.role === 'support' ? '🛠️ Support' : userData.role === 'technik' ? '⚡ Technik' : '👤 Benutzer';
+            } else {
+                userNameEl.textContent = 'Benutzer';
+                userRoleEl.textContent = '👤 Nicht angemeldet';
+            }
+        }
+
+        // Show/hide admin section based on role
+        const adminSection = document.getElementById('admin-section');
+        const userData = JSON.parse(localStorage.getItem('user') || '{"role":"user"}');
+        if (adminSection) {
+            adminSection.style.display = userData.role === 'admin' ? 'block' : 'none';
+        }
+    }
+    </script>
+</body>
+</html>
