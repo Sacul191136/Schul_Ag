@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekte - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+</head>
+<body class="admin-page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-small">
+                <span>⚙️</span>
+                <span>Team Panel</span>
+            </div>
+            <button class="sidebar-toggle">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" data-role="all">
+                <span class="icon">📊</span>
+                <span class="label">Dashboard</span>
+            </a>
+            
+            <div class="nav-section">
+                <h3>Verwaltung</h3>
+                
+                <a href="bewerbungen.html" class="nav-item" data-role="admin,teamleiter">
+                    <span class="icon">📝</span>
+                    <span class="label">Bewerbungen</span>
+                </a>
+                
+                <a href="tickets.html" class="nav-item" data-role="all">
+                    <span class="icon">🎫</span>
+                    <span class="label">Tickets</span>
+                </a>
+                
+                <a href="aufgaben.html" class="nav-item" data-role="all">
+                    <span class="icon">✓</span>
+                    <span class="label">Aufgaben</span>
+                </a>
+                
+                <a href="projekte.html" class="nav-item active" data-role="all">
+                    <span class="icon">🗂️</span>
+                    <span class="label">Projekte</span>
+                </a>
+            </div>
+
+            <div class="nav-section" id="admin-section" data-role="admin">
+                <h3>Admin</h3>
+                
+                <a href="benutzer.html" class="nav-item" data-role="admin">
+                    <span class="icon">👥</span>
+                    <span class="label">Benutzer</span>
+                </a>
+                
+                <a href="rollen.html" class="nav-item" data-role="admin">
+                    <span class="icon">🔑</span>
+                    <span class="label">Rollen & Rechte</span>
+                </a>
+                
+                <a href="einstellungen.html" class="nav-item" data-role="admin">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Einstellungen</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Weitere</h3>
+                
+                <a href="index.html" class="nav-item" data-role="all">
+                    <span class="icon">🏠</span>
+                    <span class="label">Startseite</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <div class="user-name">Benutzer</div>
+                    <div class="user-role">Nicht angemeldet</div>
+                </div>
+            </div>
+            <button class="btn btn-logout" id="logoutBtn">🚪 Logout</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1>Projektmanagement</h1>
+            <div class="topbar-right">
+                <button id="newProjectBtn" class="btn btn-primary">+ Neues Projekt</button>
+            </div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <!-- FILTER -->
+            <div class="filter-section" style="margin-bottom: 25px;">
+                <label for="agFilter" style="font-weight: bold; margin-right: 10px;">Filtern nach AG:</label>
+                <select id="agFilter" class="filter-select">
+                    <option value="">Alle AGs</option>
+                    <option value="computer">Computer Service AG</option>
+                    <option value="technik">Technik AG</option>
+                </select>
+            </div>
+
+            <!-- PROJEKT CARDS -->
+            <section class="projects-grid">
+                <!-- PROJEKT 1 -->
+                <div class="project-card" data-ag="technik">
+                    <div class="project-header">
+                        <h3>🎤 Event Februar 2026</h3>
+                        <span class="project-status in-progress">In Progress</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Vorbereitung und Durchführung der Schulaula Event mit modernster Bühnentechnik</p>
+                        
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span class="label">Start:</span>
+                                <span>01.02.2026</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="label">Ende:</span>
+                                <span>29.02.2026</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="label">Leitung:</span>
+                                <span>Sophie Klein</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                        <p class="progress-text">65% abgeschlossen (13 von 20 Aufgaben)</p>
+
+                        <div class="team-avatars">
+                            <span class="avatar" title="Sophie Klein">SK</span>
+                            <span class="avatar" title="Tom Fischer">TF</span>
+                            <span class="avatar" title="Anna Schmidt">AS</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="#" class="btn btn-small">Detailsanschauen</a>
+                    </div>
+                </div>
+
+                <!-- PROJEKT 2 -->
+                <div class="project-card" data-ag="computer">
+                    <div class="project-header">
+                        <h3>💻 Hardware Upgrade</h3>
+                        <span class="project-status in-progress">In Progress</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Modernisierung der PC-Laborausstattung mit neuen Systemen</p>
+                        
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span class="label">Start:</span>
+                                <span>15.01.2026</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="label">Ende:</span>
+                                <span>15.03.2026</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="label">Leitung:</span>
+                                <span>Tom Fischer</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%;"></div>
+                        </div>
+                        <p class="progress-text">40% abgeschlossen (8 von 20 Aufgaben)</p>
+
+                        <div class="team-avatars">
+                            <span class="avatar" title="Tom Fischer">TF</span>
+                            <span class="avatar" title="Lucas Weber">LW</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="#" class="btn btn-small">Detailsanschauen</a>
+                    </div>
+                </div>
+
+                <!-- PROJEKT 3 -->
+                <div class="project-card" data-ag="technik">
+                    <div class="project-header">
+                        <h3>📚 Netzwerk-Dokumentation</h3>
+                        <span class="project-status planning">Planung</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Erstellung einer umfassenden Netzwerk-Dokumentation für Schulinfrastruktur</p>
+                        
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span class="label">Start:</span>
+                                <span>01.03.2026</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="label">Ende:</span>
+                                <span>30.05.2026</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="label">Leitung:</span>
+                                <span>Lucas Weber</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 5%;"></div>
+                        </div>
+                        <p class="progress-text">5% abgeschlossen (1 von 20 Aufgaben)</p>
+
+                        <div class="team-avatars">
+                            <span class="avatar" title="Lucas Weber">LW</span>
+                            <span class="avatar" title="Max Müller">MM</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="#" class="btn btn-small">Detailsanschauen</a>
+                    </div>
+                </div>
+
+                <!-- PROJEKT 4 -->
+                <div class="project-card" data-ag="computer">
+                    <div class="project-header">
+                        <h3>✓ Support-Prozesse</h3>
+                        <span class="project-status completed">Abgeschlossen</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">Etablierung standardisierter Support-Prozesse und Richtlinien</p>
+                        
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <span class="label">Start:</span>
+                                <span>01.12.2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="label">Ende:</span>
+                                <span>20.01.2026</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="label">Leitung:</span>
+                                <span>Anna Schmidt</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <p class="progress-text">100% abgeschlossen (15 von 15 Aufgaben)</p>
+
+                        <div class="team-avatars">
+                            <span class="avatar" title="Anna Schmidt">AS</span>
+                            <span class="avatar" title="Sophie Klein">SK</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="#" class="btn btn-small">Archiviert</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- NEUES PROJEKT MODAL -->
+    <div id="projectModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Neues Projekt erstellen</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="newProjectForm">
+                    <div class="form-group">
+                        <label for="projectName">Projektname:</label>
+                        <input type="text" id="projectName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDescription">Beschreibung:</label>
+                        <textarea id="projectDescription" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="projectLead">Projektleitung:</label>
+                            <select id="projectLead" required>
+                                <option value="">-- Wählen --</option>
+                                <option value="sophie">Sophie Klein</option>
+                                <option value="tom">Tom Fischer</option>
+                                <option value="lucas">Lucas Weber</option>
+                                <option value="anna">Anna Schmidt</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectStatus">Status:</label>
+                            <select id="projectStatus" required>
+                                <option value="planning">Planung</option>
+                                <option value="in-progress">In Progress</option>
+                                <option value="completed">Abgeschlossen</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="projectStart">Startdatum:</label>
+                            <input type="date" id="projectStart" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectEnd">Enddatum:</label>
+                            <input type="date" id="projectEnd" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="projectCancel">Abbrechen</button>
+                <button class="btn btn-primary" id="projectSubmit">Projekt erstellen</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+    // ============================
+    // PROJEKTMANAGEMENT
+    // ============================
+
+    protectPage();
+    updateUserUI();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const modalCloseBtn = document.querySelector('.modal-close');
+        const newProjectBtn = document.getElementById('newProjectBtn');
+        const projectModal = document.getElementById('projectModal');
+        const projectCancel = document.getElementById('projectCancel');
+        const projectSubmit = document.getElementById('projectSubmit');
+
+        // Sidebar Toggle
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                sidebar.classList.toggle('collapsed');
+            });
+        }
+
+        // Close sidebar on click outside
+        document.addEventListener('click', function(e) {
+            if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                sidebar.classList.remove('collapsed');
+            }
+        });
+
+        // Logout button
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                if (confirm('Möchten Sie sich wirklich abmelden?')) {
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+
+        // Modal close button
+        if (modalCloseBtn) {
+            modalCloseBtn.addEventListener('click', function() {
+                projectModal.style.display = 'none';
+            });
+        }
+
+        if (newProjectBtn) {
+            newProjectBtn.addEventListener('click', function() {
+                projectModal.style.display = 'flex';
+            });
+        }
+
+        if (projectCancel) {
+            projectCancel.addEventListener('click', function() {
+                projectModal.style.display = 'none';
+            });
+        }
+
+        if (projectSubmit) {
+            projectSubmit.addEventListener('click', function() {
+                const name = document.getElementById('projectName').value;
+                const description = document.getElementById('projectDescription').value;
+                const lead = document.getElementById('projectLead').value;
+                const start = document.getElementById('projectStart').value;
+                const end = document.getElementById('projectEnd').value;
+
+                if (!name || !description || !lead || !start || !end) {
+                    alert('Bitte füllen Sie alle erforderlichen Felder aus.');
+                    return;
+                }
+
+                alert('✓ Projekt "' + name + '" erstellt!\nLeitung: ' + lead + '\nZeitraum: ' + start + ' bis ' + end);
+                projectModal.style.display = 'none';
+                document.getElementById('newProjectForm').reset();
+            });
+        }
+
+        // Project card click handlers
+        document.querySelectorAll('.project-card').forEach(card => {
+            const detailBtn = card.querySelector('.btn');
+            if (detailBtn) {
+                detailBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const projectName = card.querySelector('h3').textContent;
+                    alert('📋 Projektdetails für: ' + projectName + '\n\n(Diese Funktionalität wird noch erweitert)');
+                });
+            }
+        });
+
+        // Close modal on outside click
+        projectModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+    });
+
+    function updateUserUI() {
+        // Update user info in sidebar
+        const userNameEl = document.querySelector('.user-name');
+        const userRoleEl = document.querySelector('.user-role');
+        
+        if (userNameEl && userRoleEl) {
+            const userJSON = localStorage.getItem('currentUser');
+            const userData = userJSON ? JSON.parse(userJSON) : null;
+            if (userData) {
+                userNameEl.textContent = userData.name || 'Benutzer';
+                userRoleEl.textContent = userData.role === 'admin' ? '👑 Administrator' : userData.role === 'teamleiter' ? '👔 Teamleiter' : userData.role === 'support' ? '🛠️ Support' : userData.role === 'technik' ? '⚡ Technik' : '👤 Benutzer';
+            } else {
+                userNameEl.textContent = 'Benutzer';
+                userRoleEl.textContent = '👤 Nicht angemeldet';
+            }
+        }
+
+        // Show/hide admin section based on role
+        const adminSection = document.getElementById('admin-section');
+        const userData = JSON.parse(localStorage.getItem('user') || '{"role":"user"}');
+        if (adminSection) {
+            adminSection.style.display = userData.role === 'admin' ? 'block' : 'none';
+        }
+    }
+    </script>
+    <script src="js/projekte.js"></script>
+</body>
+</html>
