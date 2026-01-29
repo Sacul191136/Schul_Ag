@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Login Setup - Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+    <style>
+        body {
+            background: #f5f5f5;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
+        }
+
+        .instruction {
+            background: #e7f3ff;
+            border-left: 4px solid #0056b3;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            color: #0056b3;
+        }
+
+        .user-list {
+            margin: 15px 0;
+        }
+
+        .user-item {
+            background: white;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border-left: 4px solid #51cf66;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        .user-item .username {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .user-item .password {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .btn-test {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 10px 5px 10px 0;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-test:hover {
+            background: #0056b3;
+        }
+
+        .info-box {
+            background: #fff3bf;
+            border-left: 4px solid #f59f00;
+            padding: 15px;
+            border-radius: 4px;
+            color: #996a00;
+            margin-bottom: 15px;
+        }
+
+        .success-box {
+            background: #d3f9d8;
+            border-left: 4px solid #2b8a3e;
+            padding: 15px;
+            border-radius: 4px;
+            color: #2b8a3e;
+            margin-bottom: 15px;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            font-size: 13px;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        tr:hover {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔐 First Login Setup System - Test & Dokumentation</h1>
+
+        <div class="info-box">
+            <strong>ℹ️ Systemstatus:</strong> Das First-Login-Setup-System ist aktiv und bereit für Tests.
+        </div>
+
+        <h2>📋 Testanleitung</h2>
+        <div class="test-section">
+            <div class="instruction">
+                <strong>Schritt 1:</strong> Klicken Sie auf "Login testen" um zur Login-Seite zu gehen<br>
+                <strong>Schritt 2:</strong> Geben Sie einen Nachnamen und das entsprechende Anfangspasswort ein<br>
+                <strong>Schritt 3:</strong> Sie werden zur Setup-Seite weitergeleitet<br>
+                <strong>Schritt 4:</strong> Geben Sie E-Mail und ein neues sicheres Passwort ein<br>
+                <strong>Schritt 5:</strong> Nach dem Setup funktioniert nur noch das neue Passwort
+            </div>
+
+            <a href="login.html" class="btn-test">🔑 Login testen</a>
+        </div>
+
+        <h2>👥 Verfügbare Test-Benutzer (Neue Benutzer)</h2>
+        <div class="test-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Benutzername</th>
+                        <th>Anfangspasswort</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>Ruschhaupt</code></td>
+                        <td><code>Ru$ch#2025Pw@1</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Lohmann</code></td>
+                        <td><code>Lo&Mann2025!Sec</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Jung</code></td>
+                        <td><code>Ju@2025Secure#9</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Neumann</code></td>
+                        <td><code>Ne$2025Pass!Key</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Ertas</code></td>
+                        <td><code>Er#2025Taz$Sec</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Kunze</code></td>
+                        <td><code>Ku@2025Zen!Pwd</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Jeisecke</code></td>
+                        <td><code>Je#2025Sec$Safe</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Getfert</code></td>
+                        <td><code>Ge@2025Fert!Pwd</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Haselman</code></td>
+                        <td><code>Ha$2025Man!Sec#</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Hielscher</code></td>
+                        <td><code>Hi@2025Sch!Key$</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Borchers</code></td>
+                        <td><code>Bo#2025Cher$Sec</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Obermeier</code></td>
+                        <td><code>Ob@2025Meier!Pwd</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td><code>Gehlert</code></td>
+                        <td><code>Ge#2025Hler!Sec$</code></td>
+                        <td>🟡 Erstes Login erforderlich</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>🟢 Demo-Konten (Bereits eingerichtet)</h2>
+        <div class="test-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Benutzername</th>
+                        <th>Passwort</th>
+                        <th>Rolle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>admin</code></td>
+                        <td><code>Sch00l!Admin2026</code></td>
+                        <td>👑 Administrator</td>
+                    </tr>
+                    <tr>
+                        <td><code>support</code></td>
+                        <td><code>Sup#Port99Tech</code></td>
+                        <td>🛠️ Support</td>
+                    </tr>
+                    <tr>
+                        <td><code>technik</code></td>
+                        <td><code>T3chnik@2026Power</code></td>
+                        <td>⚡ Technik</td>
+                    </tr>
+                    <tr>
+                        <td><code>teamleiter</code></td>
+                        <td><code>Lead3r!Team2026</code></td>
+                        <td>🎯 Teamleiter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>✨ Neue Funktionen</h2>
+        <div class="test-section">
+            <h3>Zwei-Phasen-Login</h3>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>✓ <strong>Phase 1:</strong> Login mit Nachnamen + Anfangspasswort</li>
+                <li>✓ <strong>Phase 2:</strong> Einmaliges Setup mit E-Mail + eigenem Passwort</li>
+                <li>✓ Nach dem Setup: Nur das neue Passwort funktioniert</li>
+            </ul>
+
+            <h3>Passwort-Anforderungen</h3>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>✓ Mindestens 8 Zeichen</li>
+                <li>✓ Großbuchstaben (A-Z)</li>
+                <li>✓ Kleinbuchstaben (a-z)</li>
+                <li>✓ Ziffern (0-9)</li>
+                <li>✓ Sonderzeichen (!@#$%^&*)</li>
+            </ul>
+
+            <h3>Sicherheitsmerkmale</h3>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>✓ Echtzeit-Passwort-Stärkeanzeige</li>
+                <li>✓ Anforderungs-Validierung mit visuellen Indikatoren</li>
+                <li>✓ E-Mail-Adresse für Passwort-Recovery</li>
+                <li>✓ Anfangspasswörter nach Setup ungültig</li>
+            </ul>
+        </div>
+
+        <h2>📁 Betroffene Dateien</h2>
+        <div class="test-section">
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li><code>js/auth.js</code> - Erweiterte Benutzer-Datenbank</li>
+                <li><code>js/login.js</code> - Zwei-Phasen-Login-Logik</li>
+                <li><code>first-login-setup.html</code> - Setup-Formular (NEU)</li>
+                <li><code>FIRST-LOGIN-SETUP.md</code> - Dokumentation (NEU)</li>
+                <li><code>first-login-test.html</code> - Diese Test-Seite (NEU)</li>
+            </ul>
+        </div>
+
+        <h2>🐛 Troubleshooting</h2>
+        <div class="test-section">
+            <div class="info-box">
+                <strong>Problem:</strong> Benutzer sieht Setup-Seite nicht<br>
+                <strong>Lösung:</strong> Stellen Sie sicher, dass sessionStorage aktiviert ist
+            </div>
+
+            <div class="info-box">
+                <strong>Problem:</strong> Passwort wird abgelehnt<br>
+                <strong>Lösung:</strong> Prüfen Sie alle 5 Anforderungen in der Checkliste
+            </div>
+
+            <div class="info-box">
+                <strong>Problem:</strong> Kann sich nicht anmelden<br>
+                <strong>Lösung:</strong> Verwenden Sie den Nachnamen (z.B. "Ruschhaupt") als Benutzername
+            </div>
+        </div>
+
+        <h2>📝 Nächste Schritte</h2>
+        <div class="success-box">
+            <strong>1.</strong> Testen Sie das System mit einem Benutzer<br>
+            <strong>2.</strong> Überprüfen Sie die Passwort-Validierung<br>
+            <strong>3.</strong> Stellen Sie sicher, dass nur das neue Passwort funktioniert<br>
+            <strong>4.</strong> Dokumentieren Sie alle Anfangspasswörter sicher<br>
+            <strong>5.</strong> Verteilen Sie die Anfangspasswörter an die Benutzer
+        </div>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #ddd;">
+
+        <p style="text-align: center; color: #666; font-size: 12px;">
+            <strong>Team Panel - First Login Setup System</strong><br>
+            Erstellt: Januar 2026<br>
+            <a href="FIRST-LOGIN-SETUP.md" style="color: #007bff; text-decoration: none;">📖 Vollständige Dokumentation</a>
+        </p>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
