@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktivitäts-Logs - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+    <style>
+        .logs-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .logs-header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .logs-header h1 {
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+
+        .filter-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .filter-section input,
+        .filter-section select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover {
+            background: #0056b3;
+        }
+
+        .filter-btn.secondary {
+            background: #6c757d;
+        }
+
+        .filter-btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        .logs-table {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .logs-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .logs-table th {
+            background: #f5f5f5;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .logs-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .logs-table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .log-type {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .log-type.login {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .log-type.setup {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .log-type.password {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .log-type.admin {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .log-type.security {
+            background: #e7d4f5;
+            color: #663399;
+        }
+
+        .timestamp {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 10px 0 0 0;
+        }
+
+        .no-logs {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .pagination button {
+            padding: 8px 12px;
+            margin: 0 5px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .pagination button:hover {
+            background: #0056b3;
+        }
+
+        .pagination button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .export-btn {
+            background: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .export-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body class="admin-page">
+    <div class="logs-container">
+        <div class="logs-header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1>🔍 Aktivitäts-Logs</h1>
+                    <p style="color: #666; margin: 0;">Nur für Administratoren sichtbar - Alle Benutzeraktivitäten im System</p>
+                </div>
+                <button class="export-btn" onclick="exportLogs()">📥 Exportieren</button>
+            </div>
+
+            <div class="filter-section">
+                <input type="text" id="filterUsername" placeholder="Benutzername filtern...">
+                <select id="filterType">
+                    <option value="">Alle Typen</option>
+                    <option value="login">Login</option>
+                    <option value="setup">Setup</option>
+                    <option value="password">Passwort</option>
+                    <option value="admin">Admin</option>
+                    <option value="security">Sicherheit</option>
+                </select>
+                <input type="date" id="filterDate">
+                <button class="filter-btn" onclick="applyFilters()">🔎 Filtern</button>
+                <button class="filter-btn secondary" onclick="clearFilters()">✕ Zurücksetzen</button>
+            </div>
+        </div>
+
+        <div class="stats-section" id="statsSection">
+            <div class="stat-card">
+                <h3>Heute</h3>
+                <div class="number" id="statToday">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Diese Woche</h3>
+                <div class="number" id="statWeek">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Dieser Monat</h3>
+                <div class="number" id="statMonth">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Insgesamt</h3>
+                <div class="number" id="statTotal">0</div>
+            </div>
+        </div>
+
+        <div class="logs-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 150px;">Zeitstempel</th>
+                        <th style="width: 100px;">Typ</th>
+                        <th style="width: 150px;">Benutzer</th>
+                        <th style="width: 200px;">Aktion</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody id="logsTableBody">
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 40px; color: #999;">
+                            Logs werden geladen...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination" id="paginationSection" style="display: none;">
+            <button id="prevBtn" onclick="previousPage()">← Zurück</button>
+            <span id="pageInfo"></span>
+            <button id="nextBtn" onclick="nextPage()">Weiter →</button>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Page Protection - Nur für Admin
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = SessionManager.getCurrentUser();
+            
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            if (!SessionManager.hasPermission('view-activity-logs')) {
+                alert('❌ Zugriff verweigert. Diese Seite ist nur für Administratoren verfügbar.');
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            loadActivityLogs();
+        });
+
+        let allLogs = [];
+        let filteredLogs = [];
+        let currentPage = 1;
+        const logsPerPage = 20;
+
+        function loadActivityLogs() {
+            // Lade Logs aus localStorage
+            const logs = localStorage.getItem('activityLogs');
+            if (logs) {
+                try {
+                    allLogs = JSON.parse(logs);
+                    allLogs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                } catch (e) {
+                    console.error('Fehler beim Laden der Logs:', e);
+                    allLogs = [];
+                }
+            }
+
+            updateStats();
+            displayLogs();
+        }
+
+        function updateStats() {
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+            const monthAgo = new Date(today.getFullYear(), today.getMonth(), 1);
+
+            const todayCount = allLogs.filter(log => new Date(log.timestamp) >= today).length;
+            const weekCount = allLogs.filter(log => new Date(log.timestamp) >= weekAgo).length;
+            const monthCount = allLogs.filter(log => new Date(log.timestamp) >= monthAgo).length;
+
+            document.getElementById('statToday').textContent = todayCount;
+            document.getElementById('statWeek').textContent = weekCount;
+            document.getElementById('statMonth').textContent = monthCount;
+            document.getElementById('statTotal').textContent = allLogs.length;
+        }
+
+        function displayLogs() {
+            const tbody = document.getElementById('logsTableBody');
+            
+            if (filteredLogs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="no-logs">📭 Keine Logs gefunden</td></tr>';
+                document.getElementById('paginationSection').style.display = 'none';
+                return;
+            }
+
+            const startIdx = (currentPage - 1) * logsPerPage;
+            const endIdx = startIdx + logsPerPage;
+            const paginatedLogs = filteredLogs.slice(startIdx, endIdx);
+
+            tbody.innerHTML = paginatedLogs.map(log => `
+                <tr>
+                    <td>
+                        <div class="timestamp">${new Date(log.timestamp).toLocaleString('de-DE')}</div>
+                    </td>
+                    <td>
+                        <span class="log-type ${log.type}">${log.type.toUpperCase()}</span>
+                    </td>
+                    <td><strong>${log.username || '-'}</strong></td>
+                    <td>${log.action}</td>
+                    <td>${log.details || '-'}</td>
+                </tr>
+            `).join('');
+
+            // Pagination
+            const totalPages = Math.ceil(filteredLogs.length / logsPerPage);
+            if (totalPages > 1) {
+                document.getElementById('paginationSection').style.display = 'block';
+                document.getElementById('pageInfo').textContent = `Seite ${currentPage} von ${totalPages}`;
+                document.getElementById('prevBtn').disabled = currentPage === 1;
+                document.getElementById('nextBtn').disabled = currentPage === totalPages;
+            } else {
+                document.getElementById('paginationSection').style.display = 'none';
+            }
+        }
+
+        function applyFilters() {
+            const username = document.getElementById('filterUsername').value.trim().toLowerCase();
+            const type = document.getElementById('filterType').value;
+            const date = document.getElementById('filterDate').value;
+
+            filteredLogs = allLogs.filter(log => {
+                let match = true;
+
+                if (username) {
+                    match = match && (log.username || '').toLowerCase().includes(username);
+                }
+
+                if (type) {
+                    match = match && log.type === type;
+                }
+
+                if (date) {
+                    const logDate = new Date(log.timestamp).toISOString().split('T')[0];
+                    match = match && logDate === date;
+                }
+
+                return match;
+            });
+
+            currentPage = 1;
+            displayLogs();
+        }
+
+        function clearFilters() {
+            document.getElementById('filterUsername').value = '';
+            document.getElementById('filterType').value = '';
+            document.getElementById('filterDate').value = '';
+            filteredLogs = [...allLogs];
+            currentPage = 1;
+            displayLogs();
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayLogs();
+            }
+        }
+
+        function nextPage() {
+            const totalPages = Math.ceil(filteredLogs.length / logsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayLogs();
+            }
+        }
+
+        function exportLogs() {
+            const data = filteredLogs.length > 0 ? filteredLogs : allLogs;
+            const csv = 'Zeitstempel,Typ,Benutzer,Aktion,Details\n' + data.map(log =>
+                `"${new Date(log.timestamp).toLocaleString('de-DE')}","${log.type}","${log.username || '-'}","${log.action}","${log.details || '-'}"`
+            ).join('\n');
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `activity-logs-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+    </script>
+</body>
+</html>
