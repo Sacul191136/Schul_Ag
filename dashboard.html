@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+</head>
+<body class="admin-page">
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-small">
+                <span>⚙️</span>
+                <span>Team Panel</span>
+            </div>
+            <button class="sidebar-toggle">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item active" data-role="all">
+                <span class="icon">📊</span>
+                <span class="label">Dashboard</span>
+            </a>
+            
+            <div class="nav-section">
+                <h3>Verwaltung</h3>
+                
+                <a href="bewerbungen.html" class="nav-item" data-role="admin,teamleiter">
+                    <span class="icon">📝</span>
+                    <span class="label">Bewerbungen</span>
+                    <span class="badge">3</span>
+                </a>
+                
+                <a href="tickets.html" class="nav-item" data-role="all">
+                    <span class="icon">🎫</span>
+                    <span class="label">Tickets</span>
+                    <span class="badge">5</span>
+                </a>
+                
+                <a href="aufgaben.html" class="nav-item" data-role="all">
+                    <span class="icon">✓</span>
+                    <span class="label">Aufgaben</span>
+                    <span class="badge">8</span>
+                </a>
+                
+                <a href="projekte.html" class="nav-item" data-role="all">
+                    <span class="icon">🗂️</span>
+                    <span class="label">Projekte</span>
+                </a>
+            </div>
+
+            <div class="nav-section" style="display: none;" id="admin-section" data-role="admin">
+                <h3>Admin</h3>
+                
+                <a href="activity-logs.html" class="nav-item" data-role="admin">
+                    <span class="icon">🔍</span>
+                    <span class="label">Aktivitäts-Logs</span>
+                </a>
+                
+                <a href="benutzer.html" class="nav-item" data-role="admin">
+                    <span class="icon">👥</span>
+                    <span class="label">Benutzer</span>
+                </a>
+                
+                <a href="rollen.html" class="nav-item" data-role="admin">
+                    <span class="icon">🔑</span>
+                    <span class="label">Rollen & Rechte</span>
+                </a>
+                
+                <a href="einstellungen.html" class="nav-item" data-role="admin">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Einstellungen</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Weitere</h3>
+                
+                <a href="index.html" class="nav-item" data-role="all">
+                    <span class="icon">🏠</span>
+                    <span class="label">Startseite</span>
+                </a>
+
+                <a href="wissensbereich.html" class="nav-item" data-role="all">
+                    <span class="icon">📚</span>
+                    <span class="label">Wissensbereich</span>
+                </a>
+                
+                <a href="benachrichtigungen.html" class="nav-item" data-role="all">
+                    <span class="icon">🔔</span>
+                    <span class="label">Benachrichtigungen</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <span class="avatar">👤</span>
+                <div>
+                    <p class="user-name" id="userName">Benutzer</p>
+                    <p class="user-role" id="userRole">Rolle</p>
+                </div>
+            </div>
+            <button id="logoutBtn" class="btn btn-small">Abmelden</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1>Dashboard</h1>
+            <div class="topbar-right">
+                <div class="search-box">
+                    <input type="text" placeholder="Suchen...">
+                </div>
+                <a href="profil.html" class="topbar-icon">👤</a>
+            </div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <!-- WELCOME SECTION -->
+            <section class="welcome-section">
+                <h2>Willkommen zurück! 👋</h2>
+                <p id="welcomeMsg">Heutiger Datum: <span id="today"></span></p>
+            </section>
+
+            <!-- STATS ROW -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🎫</div>
+                    <div class="stat-content">
+                        <h3>Offene Tickets</h3>
+                        <p class="stat-number">5</p>
+                        <p class="stat-detail">3 zugewiesen, 2 neu</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">✓</div>
+                    <div class="stat-content">
+                        <h3>Meine Aufgaben</h3>
+                        <p class="stat-number">8</p>
+                        <p class="stat-detail">2 überfällig</p>
+                    </div>
+                </div>
+
+                <div class="stat-card" id="bewerbungen-card" style="display: none;" data-role="admin,teamleiter">
+                    <div class="stat-icon">📝</div>
+                    <div class="stat-content">
+                        <h3>Neue Bewerbungen</h3>
+                        <p class="stat-number">3</p>
+                        <p class="stat-detail">Warten auf Prüfung</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🗂️</div>
+                    <div class="stat-content">
+                        <h3>Aktive Projekte</h3>
+                        <p class="stat-number">4</p>
+                        <p class="stat-detail">Im Zeitplan</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MAIN GRID -->
+            <div class="dashboard-grid">
+                <!-- AKTUELLE TICKETS -->
+                <section class="panel">
+                    <div class="panel-header">
+                        <h3>Aktuelle Tickets</h3>
+                        <a href="tickets.html" class="btn btn-small">Alle anzeigen →</a>
+                    </div>
+                    <div class="panel-body">
+                        <table class="mini-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Titel</th>
+                                    <th>Status</th>
+                                    <th>Priorität</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="status-open">
+                                    <td>#001</td>
+                                    <td>PC Raum 202 funktioniert nicht</td>
+                                    <td><span class="badge status-open">Offen</span></td>
+                                    <td><span class="priority high">🔴 Hoch</span></td>
+                                </tr>
+                                <tr class="status-progress">
+                                    <td>#002</td>
+                                    <td>Mikrophone für Event kalibrieren</td>
+                                    <td><span class="badge status-progress">In Bearbeitung</span></td>
+                                    <td><span class="priority medium">🟡 Mittel</span></td>
+                                </tr>
+                                <tr class="status-waiting">
+                                    <td>#003</td>
+                                    <td>Benutzer warten auf Rückmeldung</td>
+                                    <td><span class="badge status-waiting">Warten</span></td>
+                                    <td><span class="priority low">🟢 Niedrig</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- MEINE AUFGABEN -->
+                <section class="panel">
+                    <div class="panel-header">
+                        <h3>Meine Aufgaben</h3>
+                        <a href="aufgaben.html" class="btn btn-small">Alle anzeigen →</a>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="task-list">
+                            <li class="task-item priority-high">
+                                <input type="checkbox">
+                                <span class="task-title">LED-Bühnentechnik testen</span>
+                                <span class="task-date">Heute</span>
+                            </li>
+                            <li class="task-item priority-medium">
+                                <input type="checkbox">
+                                <span class="task-title">Netzwerkdokumentation aktualisieren</span>
+                                <span class="task-date">Morgen</span>
+                            </li>
+                            <li class="task-item priority-medium">
+                                <input type="checkbox">
+                                <span class="task-title">Software-Lizenzen überprüfen</span>
+                                <span class="task-date">Nächste Woche</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- NEUIGKEITEN -->
+                <section class="panel full-width">
+                    <div class="panel-header">
+                        <h3>Interne Neuigkeiten</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="news-item">
+                            <span class="news-date">28.01.2026</span>
+                            <h4>System-Upgrade durchgeführt</h4>
+                            <p>Das neue Team-Panel ist online. Bitte Passwort nach erstem Login ändern!</p>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-date">25.01.2026</span>
+                            <h4>Neue LED-Bühnentechnik installiert</h4>
+                            <p>Die modernen Beleuchtungssysteme sind betriebsbereit. Schulungen folgen.</p>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-date">20.01.2026</span>
+                            <h4>AG-Sitzung am 01.02.2026</h4>
+                            <p>Treffen aller AGs zur Jahresplanung. Ort wird noch bekannt gegeben.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
