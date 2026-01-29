@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Profil - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+</head>
+<body class="admin-page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-small">
+                <span>⚙️</span>
+                <span>Team Panel</span>
+            </div>
+            <button class="sidebar-toggle">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" data-role="all">
+                <span class="icon">📊</span>
+                <span class="label">Dashboard</span>
+            </a>
+            
+            <div class="nav-section">
+                <h3>Verwaltung</h3>
+                
+                <a href="bewerbungen.html" class="nav-item" data-role="admin,teamleiter">
+                    <span class="icon">📝</span>
+                    <span class="label">Bewerbungen</span>
+                </a>
+                
+                <a href="tickets.html" class="nav-item" data-role="all">
+                    <span class="icon">🎫</span>
+                    <span class="label">Tickets</span>
+                </a>
+                
+                <a href="aufgaben.html" class="nav-item" data-role="all">
+                    <span class="icon">✓</span>
+                    <span class="label">Aufgaben</span>
+                </a>
+                
+                <a href="projekte.html" class="nav-item" data-role="all">
+                    <span class="icon">🗂️</span>
+                    <span class="label">Projekte</span>
+                </a>
+            </div>
+
+            <div class="nav-section" id="admin-section" data-role="admin">
+                <h3>Admin</h3>
+                
+                <a href="benutzer.html" class="nav-item" data-role="admin">
+                    <span class="icon">👥</span>
+                    <span class="label">Benutzer</span>
+                </a>
+                
+                <a href="rollen.html" class="nav-item" data-role="admin">
+                    <span class="icon">🔑</span>
+                    <span class="label">Rollen & Rechte</span>
+                </a>
+                
+                <a href="einstellungen.html" class="nav-item" data-role="admin">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Einstellungen</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Weitere</h3>
+                
+                <a href="index.html" class="nav-item" data-role="all">
+                    <span class="icon">🏠</span>
+                    <span class="label">Startseite</span>
+                </a>
+                
+                <a href="profil.html" class="nav-item active" data-role="all">
+                    <span class="icon">👤</span>
+                    <span class="label">Mein Profil</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+                <div class="user-details">
+                    <div class="user-name">Benutzer</div>
+                    <div class="user-role">Nicht angemeldet</div>
+                </div>
+            </div>
+            <button class="btn btn-logout" id="logoutBtn">🚪 Logout</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1>Mein Profil</h1>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+                <!-- PROFIL-KARTE -->
+                <div class="panel">
+                    <div class="panel-body" style="text-align: center;">
+                        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #0066cc 0%, #004fa3 100%); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">
+                            👤
+                        </div>
+                        <h2 id="profileName" style="margin: 0 0 0.5rem;">Admin User</h2>
+                        <p id="profileRole" style="margin: 0 0 1rem; color: #666;">👑 Administrator</p>
+                        <p id="profileAG" style="margin: 0; color: #999; font-size: 0.9rem;">Verwaltung</p>
+                    </div>
+                </div>
+
+                <!-- PROFIL-DETAILS -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h3>Benutzerinformationen</h3>
+                        <button id="editProfileBtn" class="btn btn-small btn-edit">Bearbeiten</button>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>Voller Name:</label>
+                            <p id="detailName">Admin User</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>E-Mail:</label>
+                            <p id="detailEmail">admin@school.de</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Benutzername:</label>
+                            <p id="detailUsername">admin</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Rolle:</label>
+                            <p id="detailRole">Administrator (👑)</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>AG:</label>
+                            <p id="detailAG">Verwaltung</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Angemeldet seit:</label>
+                            <p id="detailJoined">15.01.2026</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Letzter Login:</label>
+                            <p id="detailLastLogin">28.01.2026 um 10:30 Uhr</p>
+                        </div>
+
+                        <hr style="border: none; border-top: 1px solid #eee; margin: 1.5rem 0;">
+
+                        <button id="changePasswordBtn" class="btn btn-secondary" style="display: block; width: 100%; margin-bottom: 0.5rem;">🔐 Passwort ändern</button>
+                        <button class="btn btn-secondary" style="display: block; width: 100%;">📧 E-Mail-Adresse ändern</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AKTIVITÄT -->
+            <div class="panel" style="margin-top: 2rem;">
+                <div class="panel-header">
+                    <h3>Aktivitätsübersicht</h3>
+                </div>
+                <div class="panel-body">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="background: #e8f4f8; padding: 1rem; border-radius: 6px;">
+                            <p style="margin: 0; font-size: 0.8rem; color: #0066cc; text-transform: uppercase; font-weight: 600;">Bewerbungen bearbeitet</p>
+                            <p style="margin: 0.5rem 0 0; font-size: 1.5rem; font-weight: bold; color: #333;">24</p>
+                        </div>
+
+                        <div style="background: #fff3cd; padding: 1rem; border-radius: 6px;">
+                            <p style="margin: 0; font-size: 0.8rem; color: #856404; text-transform: uppercase; font-weight: 600;">Tickets bearbeitet</p>
+                            <p style="margin: 0.5rem 0 0; font-size: 1.5rem; font-weight: bold; color: #333;">18</p>
+                        </div>
+
+                        <div style="background: #d1e7dd; padding: 1rem; border-radius: 6px;">
+                            <p style="margin: 0; font-size: 0.8rem; color: #0f5132; text-transform: uppercase; font-weight: 600;">Aufgaben erledigt</p>
+                            <p style="margin: 0.5rem 0 0; font-size: 1.5rem; font-weight: bold; color: #333;">42</p>
+                        </div>
+
+                        <div style="background: #cfe2ff; padding: 1rem; border-radius: 6px;">
+                            <p style="margin: 0; font-size: 0.8rem; color: #084298; text-transform: uppercase; font-weight: 600;">Benutzer verwaltet</p>
+                            <p style="margin: 0.5rem 0 0; font-size: 1.5rem; font-weight: bold; color: #333;">32</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SICHERHEIT -->
+            <div class="panel" style="margin-top: 2rem;">
+                <div class="panel-header">
+                    <h3>Sicherheit</h3>
+                </div>
+                <div class="panel-body">
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4>🔐 Login-Informationen</h4>
+                        <p style="font-size: 0.9rem; color: #666;">
+                            <strong>IP-Adresse:</strong> 192.168.1.100<br>
+                            <strong>Browser:</strong> Chrome 120 (Windows)<br>
+                            <strong>Angemeldet:</strong> vor 30 Minuten
+                        </p>
+                    </div>
+
+                    <div style="background: #fff3cd; padding: 1rem; border-radius: 6px; border-left: 4px solid #ffc107; margin-bottom: 1.5rem;">
+                        <strong>⚠️ Sicherheitswarnung:</strong><br>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.9rem;">Ihr Passwort wurde zuletzt vor 90 Tagen geändert. Wir empfehlen, es regelmäßig zu aktualisieren.</p>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <label>
+                            <input type="checkbox" checked> Zwei-Faktor-Authentifizierung (2FA)
+                        </label>
+                        <span style="color: #51cf66; font-weight: 600;">🟢 AKTIVIERT</span>
+                    </div>
+
+                    <div style="margin-top: 1rem;">
+                        <a href="#" style="color: #0066cc;">📋 Login-Verlauf anschauen →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PREFERENCES -->
+            <div class="panel" style="margin-top: 2rem;">
+                <div class="panel-header">
+                    <h3>Einstellungen</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" checked> E-Mail-Benachrichtigungen aktivieren
+                        </label>
+                        <p style="font-size: 0.85rem; color: #666; margin: 0.5rem 0 0;">Du erhältst E-Mails für neue Tickets, Bewerbungen und Aufgaben</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" checked> Interne Benachrichtigungen
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="theme">Design:</label>
+                        <select id="theme" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px;">
+                            <option selected>Hell (Standard)</option>
+                            <option>Dunkel</option>
+                            <option>System-Standard</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="language">Sprache:</label>
+                        <select id="language" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px;">
+                            <option selected>Deutsch (de)</option>
+                            <option>English (en)</option>
+                            <option>Français (fr)</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Speichern</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- PASSWORT-ÄNDERUNG MODAL -->
+    <div id="passwordModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Passwort ändern</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="passwordForm">
+                    <div class="form-group">
+                        <label for="oldPassword">Aktuelles Passwort:</label>
+                        <input type="password" id="oldPassword" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPassword">Neues Passwort:</label>
+                        <input type="password" id="newPassword" required placeholder="Mindestens 8 Zeichen">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Passwort wiederholen:</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+
+                    <div style="background: #f9f9f9; padding: 1rem; border-radius: 6px; font-size: 0.85rem; color: #666;">
+                        <p style="margin-top: 0;"><strong>Passwort-Anforderungen:</strong></p>
+                        <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                            <li>Mindestens 8 Zeichen lang</li>
+                            <li>Mindestens einen Großbuchstaben</li>
+                            <li>Mindestens eine Zahl</li>
+                            <li>Mindestens ein Sonderzeichen (!@#$%)</li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="passwordCancel">Abbrechen</button>
+                <button class="btn btn-primary" id="passwordSubmit">Passwort ändern</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+    // ============================
+    // PROFIL
+    // ============================
+
+    protectPage();
+    updateUserUI();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const modalCloseBtn = document.querySelector('.modal-close');
+        const changePasswordBtn = document.getElementById('changePasswordBtn');
+        const passwordModal = document.getElementById('passwordModal');
+        const passwordCancel = document.getElementById('passwordCancel');
+        const passwordSubmit = document.getElementById('passwordSubmit');
+
+        // Sidebar Toggle
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                sidebar.classList.toggle('collapsed');
+            });
+        }
+
+        // Close sidebar on click outside
+        document.addEventListener('click', function(e) {
+            if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                sidebar.classList.remove('collapsed');
+            }
+        });
+
+        // Logout button
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                if (confirm('Möchten Sie sich wirklich abmelden?')) {
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+
+        // Modal close button
+        if (modalCloseBtn) {
+            modalCloseBtn.addEventListener('click', function() {
+                passwordModal.style.display = 'none';
+            });
+        }
+
+        const user = SessionManager.getCurrentUser();
+        
+        if (user) {
+            document.getElementById('profileName').textContent = user.name;
+            document.getElementById('profileRole').textContent = '👑 ' + user.role;
+            document.getElementById('profileAG').textContent = user.ag;
+            
+            document.getElementById('detailName').textContent = user.name;
+            document.getElementById('detailEmail').textContent = user.email;
+            document.getElementById('detailUsername').textContent = user.username;
+            document.getElementById('detailRole').textContent = user.role;
+            document.getElementById('detailAG').textContent = user.ag;
+        }
+
+        if (changePasswordBtn) {
+            changePasswordBtn.addEventListener('click', function() {
+                passwordModal.style.display = 'flex';
+            });
+        }
+
+        if (passwordCancel) {
+            passwordCancel.addEventListener('click', function() {
+                passwordModal.style.display = 'none';
+            });
+        }
+
+        if (passwordSubmit) {
+            passwordSubmit.addEventListener('click', function() {
+                const oldPassword = document.getElementById('oldPassword').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                if (newPassword !== confirmPassword) {
+                    alert('Passwörter stimmen nicht überein!');
+                    return;
+                }
+
+                if (newPassword.length < 8) {
+                    alert('Passwort muss mindestens 8 Zeichen lang sein!');
+                    return;
+                }
+
+                alert('✓ Passwort erfolgreich geändert!');
+                passwordModal.style.display = 'none';
+                document.getElementById('passwordForm').reset();
+            });
+        }
+
+        // Close modal on outside click
+        passwordModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+
+        document.getElementById('editProfileBtn').addEventListener('click', function() {
+            alert('✏️ Profilbearbeitung wird noch implementiert (Backend erforderlich)');
+        });
+    });
+
+    function updateUserUI() {
+        // Update user info in sidebar
+        const userNameEl = document.querySelector('.user-name');
+        const userRoleEl = document.querySelector('.user-role');
+        
+        if (userNameEl && userRoleEl) {
+            const userJSON = localStorage.getItem('currentUser');
+            const userData = userJSON ? JSON.parse(userJSON) : null;
+            if (userData) {
+                userNameEl.textContent = userData.name || 'Benutzer';
+                userRoleEl.textContent = userData.role === 'admin' ? '👑 Administrator' : userData.role === 'teamleiter' ? '👔 Teamleiter' : userData.role === 'support' ? '🛠️ Support' : userData.role === 'technik' ? '⚡ Technik' : '👤 Benutzer';
+            } else {
+                userNameEl.textContent = 'Benutzer';
+                userRoleEl.textContent = '👤 Nicht angemeldet';
+            }
+        }
+
+        // Show/hide admin section based on role
+        const adminSection = document.getElementById('admin-section');
+        const userData = JSON.parse(localStorage.getItem('user') || '{"role":"user"}');
+        if (adminSection) {
+            adminSection.style.display = userData.role === 'admin' ? 'block' : 'none';
+        }
+    }
+    </script>
+</body>
+</html>
