@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontakt - Schreib uns eine Nachricht">
+    <title>Kontakt - AG's der Schule</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">⚙️</span>
+                <span>AG's der Schule</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="about.html">Über uns</a></li>
+                    <li><a href="computer-service-ag.html">Computer Service AG</a></li>
+                    <li><a href="technik.html">Technik AG</a></li>
+                    <li><a href="projects.html">Projekte</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="join.html">Mitmachen</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li class="active"><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>📞 Kontakt</h1>
+        <p>Wir freuen uns auf deine Nachricht</p>
+    </div>
+
+    <div class="container">
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb">
+            <a href="index.html">Startseite</a> / Kontakt
+        </div>
+
+        <!-- KONTAKT-INFORMATIONEN -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+            <!-- Computer Service AG -->
+            <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); border-left: 5px solid #0066cc;">
+                <h3 style="color: #0066cc; margin-top: 0;">💻 Computer Service AG</h3>
+                
+                <h4 style="margin-top: 1.5rem;">Kontaktpersonen</h4>
+                <p>
+                    <strong>Leiter:</strong> Frau Lohmann<br>
+                    📧 sabine.lohmann@ceciliengymnasium.schule<br>
+                    📞 0123 / 456-7890 (Schultelefon)
+                </p>
+                <p>
+                    <strong>Co-Leiter:</strong> Herr Jung<br>
+                    📧 christofer.jung@ceciliengymnasium.schule
+                </p>
+
+                <h4>Sprechzeiten</h4>
+                <ul>
+                    <li>🕐 <strong>Dienstag:</strong> 1. Große Pause</li>
+                    <li>🕐 <strong>Donnerstag:</strong> 2. Große Pause</li>
+                </ul>
+
+                <h4>Ort</h4>
+                <p>🏠 IT-Raum 115</p>
+
+                <h4>Notfall IT-Support</h4>
+                <p>Für dringende Support-Anfragen: <a href="support.html" style="color: #0066cc; font-weight: bold;">Support-Formular nutzen</a></p>
+            </div>
+
+            <!-- Technik AG -->
+            <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); border-left: 5px solid #ff9800;">
+                <h3 style="color: #ff9800; margin-top: 0;">🎬 Technik AG</h3>
+                
+                <h4 style="margin-top: 1.5rem;">Kontaktpersonen</h4>
+                <p>
+                    <strong>Leiter:</strong> Herr Kornfeld<br>
+                    📧 Lars.kornfeld@ceciliengymnasium.schule<br>
+                    📞 0123 / 456-7890 (Schultelefon)
+                </p>
+                <p>
+                    <strong>Co-Leiter:</strong> Jakob Jeisecke<br>
+                    📧 jakob.jeisecke@ceciliengymnasium.schule
+                </p>
+
+                
+
+                <h4>Ort</h4>
+                <p>🏠 Technik-Raum (Aula)</p>
+
+                <h4>Besondere Anfragen</h4>
+                <p>Für Veranstaltungen & Event-Anfragen.</p>
+            </div>
+        </div>
+
+        <!-- KONTAKTFORMULAR -->
+        <section class="content">
+            <h2>✉️ Kontaktformular</h2>
+            <p>Schreib uns deine Frage oder Nachricht. Wir antworten dir schnellstmöglich!</p>
+
+            <form style="max-width: 700px;">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-Mail *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="ag">An welche AG richtet sich deine Anfrage? *</label>
+                    <select id="ag" name="ag" required>
+                        <option value="">-- Wählen --</option>
+                        <option value="Computer Service AG">💻 Computer Service AG</option>
+                        <option value="Technik AG">🎬 Technik AG</option>
+                        <option value="Allgemein">Allgemeine Anfrage</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Betreff *</label>
+                    <input type="text" id="subject" name="subject" placeholder="Worum geht es?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Nachricht *</label>
+                    <textarea id="message" name="message" placeholder="Schreib uns deine Frage oder Nachricht..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Nachrichtentyp</label>
+                    <div class="form-checkbox">
+                        <input type="radio" id="question" name="type" value="question">
+                        <label for="question" style="margin: 0;">❓ Allgemeine Frage</label>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="radio" id="event" name="type" value="event">
+                        <label for="event" style="margin: 0;">🎬 Veranstaltungsanfrage (Technik AG)</label>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="radio" id="feedback" name="type" value="feedback">
+                        <label for="feedback" style="margin: 0;">💬 Feedback / Verbesserungsvorschlag</label>
+                    </div>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent" style="margin: 0;">Ich bin mit der Speicherung meiner Daten einverstanden *</label>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                        Nachricht absenden
+                    </button>
+                </div>
+            </form>
+
+            <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
+                <strong>Datenschutz:</strong> Deine Daten werden nur zur Beantwortung deiner Anfrage verwendet 
+                und nicht an Dritte weitergegeben. Weitere Infos in unserer <a href="#" style="color: #0066cc;">Datenschutzerklärung</a>.
+            </p>
+        </section>
+
+        <!-- SCHULADRESSE -->
+        <section class="content">
+            <h2>📍 Schuladresse</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                <div>
+                    <h4>Schulname</h4>
+                    <p>
+                        [Name eurer Schule]<br>
+                        [Straße] 123<br>
+                        [PLZ] [Stadt]<br>
+                        Deutschland
+                    </p>
+
+                    <h4 style="margin-top: 1.5rem;">Allgemeines Schultelefon</h4>
+                    <p>📞 0123 / 456-7890</p>
+
+                    <h4 style="margin-top: 1.5rem;">Allgemeines Sekretariat</h4>
+                    <p>📧 info@schule.de<br>
+                       🕐 Mo - Fr: 08:00 - 14:00 Uhr</p>
+                </div>
+
+                <div>
+                    <h4>So findest du uns</h4>
+                    <p>
+                        <strong>Computer Service AG:</strong> IT-Raum im Keller (neben der Schulbibliothek)<br>
+                        <strong>Technik AG:</strong> Technik-Raum in der Aula (neben der Bühne)
+                    </p>
+                    
+                    <h4 style="margin-top: 1.5rem;">Öffnungszeiten während der Schulzeit</h4>
+                    <p>Computer Service AG: Mo & Mi 14:00 - 16:00 Uhr<br>
+                       Technik AG: Di & Fr 14:00 - 16:00 Uhr</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1rem; background: #f0f0f0; border-radius: 5px;">
+                <strong>🗓️ Ferienzeiten:</strong> Die AG's haben in den Schulferien normalerweise Pause. 
+                Besondere Projekte können aber auch in den Ferien stattfinden – fragt am besten nach!
+            </div>
+        </section>
+
+        <!-- SCHNELLE LÖSUNGEN -->
+        <section class="content">
+            <h2>⚡ Schnelle Lösungen</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+                    <h4 style="color: #0066cc;">🆘 IT-Problem?</h4>
+                    <p>Du hast ein technisches Problem mit deinem Computer? Schreib uns oder komm direkt zu einer Sprechstunde!</p>
+                    <a href="support.html" style="color: #0066cc; font-weight: bold;">→ Support-Anfrage</a>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+                    <h4 style="color: #ff9800;">🎬 Event-Anfrage?</h4>
+                    <p>Benötigst du Technik für deine Veranstaltung? Die Technik AG hilft dir gerne!</p>
+                    <a href="contact.html" style="color: #ff9800; font-weight: bold;">→ Anfrage stellen</a>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+                    <h4 style="color: #0066cc;">🎓 Du willst beitreten?</h4>
+                    <p>Interesse, Teil einer AG zu werden? Wir freuen uns auf dich!</p>
+                    <a href="join.html" style="color: #0066cc; font-weight: bold;">→ Anmelden</a>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+                    <h4 style="color: #ff9800;">❓ Allgemeine Frage?</h4>
+                    <p>Hast du eine Frage zu den AG's? Nutze das Kontaktformular oben!</p>
+                    <a href="#contact-form" style="color: #ff9800; font-weight: bold;">→ Nach oben zum Formular</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOCIAL MEDIA / KOMMUNIKATION -->
+        <section class="content">
+            <h2>💬 Weitere Kommunikationswege</h2>
+            
+            <h3>WhatsApp-Gruppen</h3>
+            <p>
+                Beide AG's haben WhatsApp-Gruppen für schnelle Absprachen und aktuelle Updates. 
+                Du wirst nach der Anmeldung eingeladen!
+            </p>
+
+            <h3>Schulserver / Intranet</h3>
+            <p>
+                Auf unserem Schulserver findest du eine Wissensdatenbank mit häufigen Fragen, 
+                Dokumentationen und Tutorials. (Login erforderlich)
+            </p>
+
+            <h3>Nachrichtenbrett (vor den AG-Räumen)</h3>
+            <p>
+                Besucht regelmäßig das Nachrichtenbrett vor den AG-Räumen für Ankündigungen, 
+                Termine und wichtige Mitteilungen.
+            </p>
+        </section>
+
+        <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #e3f2fd 0%, #fff3e0 100%); border-radius: 10px; text-align: center;">
+            <h3>🤝 Wir freuen uns auf deine Nachricht!</h3>
+            <p>Egal ob Frage, Anmeldung oder Lob – hör von dir!</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>🎯 AG's der Schule</h4>
+                <p>Computer Service AG & Technik AG – Zentrale Plattform der Schulwerkstätten</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="about.html">Über uns</a></li>
+                    <li><a href="projects.html">Projekte</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>AG's</h4>
+                <ul>
+                    <li><a href="computer-service-ag.html">Computer Service AG</a></li>
+                    <li><a href="technik.html">Technik AG</a></li>
+                    <li><a href="join.html">Mitmachen</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontakt & Support</h4>
+                <ul>
+                    <li><a href="contact.html">Kontaktformular</a></li>
+                    <li><a href="support.html">Support-Anfrage</a></li>
+                    <li>📍 Schule [Adresse]</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AG's der Schule. Alle Rechte vorbehalten. | <a href="datenschutz.html" style="color: #999;">Datenschutz</a> | <a href="impressum.html" style="color: #999;">Impressum</a></p>
+        </div>
+    </footer>
+</body>
+</html>
