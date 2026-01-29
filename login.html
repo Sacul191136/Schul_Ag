@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <span class="logo-icon">🔐</span>
+                <h1>Team Panel Login</h1>
+                <p>AG's der Schule - Internes System</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Benutzername / E-Mail:</label>
+                    <input type="text" id="username" name="username" required placeholder="Benutzername oder E-Mail">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Passwort:</label>
+                    <input type="password" id="password" name="password" required placeholder="Passwort">
+                </div>
+
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Anmeldedaten merken</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Anmelden</button>
+            </form>
+
+            <div class="login-footer">
+                <a href="forgot-password.html">Passwort vergessen?</a>
+                <span>|</span>
+                <a href="registration.html">Neuer Benutzer?</a>
+                <span>|</span>
+                <a href="index.html">← Zur Startseite</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
