@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentifizierung Test - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+    <style>
+        .test-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .test-box {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .test-box h2 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .code {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+
+        .status-new {
+            background: #fff3cd;
+            color: #856404;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-complete {
+            background: #d4edda;
+            color: #155724;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 15px;
+            color: #0c5460;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 15px;
+            color: #155724;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .btn.danger {
+            background: #dc3545;
+        }
+
+        .btn.danger:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-box">
+            <h2>🔐 Authentifizierung & Passwort-Management Test</h2>
+            
+            <div class="success-box">
+                ✅ <strong>System erfolgreich konfiguriert!</strong> Alle neuen Dateien und Funktionen wurden implementiert.
+            </div>
+
+            <div class="info-box">
+                ℹ️ Dieses Test-Dashboard zeigt den Status aller Benutzer und ermöglicht es, das System zu verwalten.
+            </div>
+
+            <h3>📊 Übersicht der neuen Features</h3>
+            <ul>
+                <li><strong>First-Login Setup:</strong> Neue Benutzer müssen eine E-Mail und eigenes Passwort setzen</li>
+                <li><strong>Passwort-Vergessen:</strong> Benutzer können ihr Passwort über E-Mail zurücksetzen</li>
+                <li><strong>Passwort-Reset:</strong> Temporäre Passwörter sind 1 Stunde lang gültig</li>
+                <li><strong>Persistent Storage:</strong> Benutzerdaten werden lokal gespeichert</li>
+            </ul>
+
+            <h3>👥 Benutzer Status</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Benutzername</th>
+                        <th>E-Mail</th>
+                        <th>First Login</th>
+                        <th>AG</th>
+                        <th>Passwort Status</th>
+                    </tr>
+                </thead>
+                <tbody id="userTable">
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: #666;">
+                            Benutzerdaten werden geladen...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>🔧 Test Funktionen</h3>
+            <button class="btn" onclick="testFirstLogin()">First-Login Simulieren</button>
+            <button class="btn" onclick="testPasswordReset()">Passwort-Reset Simulieren</button>
+            <button class="btn" onclick="viewEmailLogs()">📧 E-Mail-Logs anzeigen</button>
+            <button class="btn" onclick="clearStorage()">Alle Daten zurücksetzen</button>
+            <button class="btn danger" onclick="loadDefaultData()">Standard-Daten laden</button>
+
+            <h3>📝 Anleitung</h3>
+            <ol>
+                <li><strong>Erstes Login:</strong> Besuchen Sie <a href="login.html">Login-Seite</a> und melden Sie sich mit Ihrem Nachname und temporärem Passwort an</li>
+                <li><strong>E-Mail & Passwort setzen:</strong> Geben Sie eine E-Mail-Adresse ein und erstellen Sie ein sicheres Passwort</li>
+                <li><strong>Normales Login:</strong> Melden Sie sich mit Ihrem Benutzernamen und dem neuen Passwort an</li>
+                <li><strong>Passwort vergessen:</strong> Gehen Sie zu <a href="forgot-password.html">Passwort vergessen</a> und geben Sie Ihre E-Mail ein</li>
+                <li><strong>Neues Passwort setzen:</strong> Verwenden Sie das temporäre Passwort zum Login und setzen Sie ein neues Passwort</li>
+            </ol>
+        </div>
+
+        <div class="test-box">
+            <h2>📋 Neue Benutzer (Temporäre Passwörter)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Benutzername</th>
+                        <th>Temporäres Passwort</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ruschhaupt</td>
+                        <td><code>Ru$ch#2025Pw@1</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Lohmann</td>
+                        <td><code>Lo&Mann2025!Sec</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Jung</td>
+                        <td><code>Ju@2025Secure#9</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Neumann</td>
+                        <td><code>Ne$2025Pass!Key</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Ertas</td>
+                        <td><code>Er#2025Taz$Sec</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Kunze</td>
+                        <td><code>Ku@2025Zen!Pwd</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Jeisecke</td>
+                        <td><code>Je#2025Sec$Safe</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Getfert</td>
+                        <td><code>Ge@2025Fert!Pwd</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Haselman</td>
+                        <td><code>Ha$2025Man!Sec#</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Hielscher</td>
+                        <td><code>Hi@2025Sch!Key$</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Borchers</td>
+                        <td><code>Bo#2025Cher$Sec</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Obermeier</td>
+                        <td><code>Ob@2025Meier!Pwd</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                    <tr>
+                        <td>Gehlert</td>
+                        <td><code>Ge#2025Hler!Sec$</code></td>
+                        <td><span class="status-new">Neu - Setup erforderlich</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserTable();
+        });
+
+        function loadUserTable() {
+            const tbody = document.getElementById('userTable');
+            tbody.innerHTML = '';
+
+            allUsers.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${user.username}</strong></td>
+                    <td>${user.email || '<em style="color: #999;">-</em>'}</td>
+                    <td>${user.firstLoginDone ? '<span class="status-complete">✓ Abgeschlossen</span>' : '<span class="status-new">✗ Ausstehend</span>'}</td>
+                    <td>${user.ag || '<em style="color: #999;">-</em>'}</td>
+                    <td>${user.password ? '<span class="status-complete">✓ Gesetzt</span>' : '<span class="status-new">Temporär</span>'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function testFirstLogin() {
+            alert('Klicken Sie auf "Login-Seite" und melden Sie sich an mit:\n\nBenutzername: Ruschhaupt\nPasswort: Ru$ch#2025Pw@1');
+        }
+
+        function testPasswordReset() {
+            alert('Gehen Sie zu "Passwort vergessen" und geben Sie ein:\n\nBenutzername oder E-Mail eines eingerichteten Benutzers');
+        }
+
+        function viewEmailLogs() {
+            const emailLogs = localStorage.getItem('emailLogs');
+            let logs = [];
+            
+            if (emailLogs) {
+                try {
+                    logs = JSON.parse(emailLogs);
+                } catch (e) {
+                    alert('❌ Fehler beim Laden der E-Mail-Logs');
+                    return;
+                }
+            }
+
+            if (logs.length === 0) {
+                alert('📭 Keine E-Mails versendet');
+                return;
+            }
+
+            let message = '📧 Versendete Passwort-Reset E-Mails:\n\n';
+            logs.forEach((log, index) => {
+                const sentTime = new Date(log.sentAt).toLocaleString('de-DE');
+                const expiresTime = new Date(log.expiresAt).toLocaleString('de-DE');
+                message += `${index + 1}. An: ${log.to}\n`;
+                message += `   Versendet: ${sentTime}\n`;
+                message += `   Gültig bis: ${expiresTime}\n`;
+                message += `   Passwort: ${log.tempPassword}\n\n`;
+            });
+
+            alert(message);
+        }
+
+        function clearStorage() {
+            if (confirm('⚠️ Alle gespeicherten Benutzerdaten werden gelöscht. Fortfahren?')) {
+                localStorage.removeItem('allUsersData');
+                localStorage.removeItem('currentUser');
+                Object.keys(localStorage).forEach(key => {
+                    if (key.startsWith('passwordReset_')) {
+                        localStorage.removeItem(key);
+                    }
+                });
+                alert('✅ Alle Daten wurden gelöscht. Seite wird neu geladen...');
+                location.reload();
+            }
+        }
+
+        function loadDefaultData() {
+            if (confirm('⚠️ Alle Benutzerdaten werden auf Standard zurückgesetzt. Fortfahren?')) {
+                localStorage.removeItem('allUsersData');
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
