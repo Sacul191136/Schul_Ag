@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgaben - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+</head>
+<body class="admin-page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-small">
+                <span>⚙️</span>
+                <span>Team Panel</span>
+            </div>
+            <button class="sidebar-toggle">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" data-role="all">
+                <span class="icon">📊</span>
+                <span class="label">Dashboard</span>
+            </a>
+            
+            <div class="nav-section">
+                <h3>Verwaltung</h3>
+                
+                <a href="bewerbungen.html" class="nav-item" data-role="admin,teamleiter">
+                    <span class="icon">📝</span>
+                    <span class="label">Bewerbungen</span>
+                </a>
+                
+                <a href="tickets.html" class="nav-item" data-role="all">
+                    <span class="icon">🎫</span>
+                    <span class="label">Tickets</span>
+                </a>
+                
+                <a href="aufgaben.html" class="nav-item active" data-role="all">
+                    <span class="icon">✓</span>
+                    <span class="label">Aufgaben</span>
+                </a>
+                
+                <a href="projekte.html" class="nav-item" data-role="all">
+                    <span class="icon">🗂️</span>
+                    <span class="label">Projekte</span>
+                </a>
+            </div>
+
+            <div class="nav-section" id="admin-section" data-role="admin">
+                <h3>Admin</h3>
+                
+                <a href="benutzer.html" class="nav-item" data-role="admin">
+                    <span class="icon">👥</span>
+                    <span class="label">Benutzer</span>
+                </a>
+                
+                <a href="rollen.html" class="nav-item" data-role="admin">
+                    <span class="icon">🔑</span>
+                    <span class="label">Rollen & Rechte</span>
+                </a>
+                
+                <a href="einstellungen.html" class="nav-item" data-role="admin">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Einstellungen</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Weitere</h3>
+                
+                <a href="index.html" class="nav-item" data-role="all">
+                    <span class="icon">🏠</span>
+                    <span class="label">Startseite</span>
+                </a>
+
+                <a href="wissensbereich.html" class="nav-item" data-role="all">
+                    <span class="icon">📚</span>
+                    <span class="label">Wissensbereich</span>
+                </a>
+
+                <a href="benachrichtigungen.html" class="nav-item" data-role="all">
+                    <span class="icon">🔔</span>
+                    <span class="label">Benachrichtigungen</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <span class="avatar">👤</span>
+                <div>
+                    <p class="user-name" id="userNameDisplay">Benutzer</p>
+                    <p class="user-role" id="userRoleDisplay">Rolle</p>
+                </div>
+            </div>
+            <button id="logoutBtn" class="btn btn-small">Abmelden</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1>Aufgabenverwaltung</h1>
+            <div class="topbar-right">
+                <button id="newTaskBtn" class="btn btn-primary">+ Neue Aufgabe</button>
+            </div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <!-- FILTER -->
+            <section class="filter-bar">
+                <div style="display: flex; gap: 0.5rem; flex: 1;">
+                    <input type="text" id="searchTasks" placeholder="Aufgaben durchsuchen..." style="flex: 1;">
+                    <button id="searchBtn" class="btn btn-primary" style="padding: 0.5rem 1rem;">🔍 Suchen</button>
+                </div>
+                <select id="priorityFilter" class="filter-select">
+                    <option value="">Priorität: Alle</option>
+                    <option value="hoch">🔴 Hoch</option>
+                    <option value="mittel">🟡 Mittel</option>
+                    <option value="niedrig">🟢 Niedrig</option>
+                </select>
+                <select id="assigneeFilter" class="filter-select">
+                    <option value="">Zuständig: Alle</option>
+                    <option value="me">Nur meine</option>
+                    <option value="team">Team</option>
+                </select>
+            </section>
+
+            <!-- AUFGABENLISTE -->
+            <section class="panel">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;"></th>
+                            <th>Aufgabe</th>
+                            <th>Zuständig</th>
+                            <th>Projekt</th>
+                            <th>Priorität</th>
+                            <th>Fällig</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="priority-high">
+                            <td><input type="checkbox"></td>
+                            <td><strong>LED-Bühnentechnik vollständig testen</strong></td>
+                            <td>Sophie Klein</td>
+                            <td>Event Feb 2026</td>
+                            <td><span class="priority high">🔴 Hoch</span></td>
+                            <td>28.01.2026</td>
+                            <td><span class="badge status-progress">In Bearbeitung</span></td>
+                        </tr>
+                        <tr class="priority-high">
+                            <td><input type="checkbox"></td>
+                            <td><strong>PC-Laborausstattung aktualisieren</strong></td>
+                            <td>Tom Fischer</td>
+                            <td>Hardware Upgrade</td>
+                            <td><span class="priority high">🔴 Hoch</span></td>
+                            <td>05.02.2026</td>
+                            <td><span class="badge status-offen">Offen</span></td>
+                        </tr>
+                        <tr class="priority-medium">
+                            <td><input type="checkbox"></td>
+                            <td><strong>Netzwerkdokumentation überarbeiten</strong></td>
+                            <td>Lucas Weber</td>
+                            <td>Dokumentation</td>
+                            <td><span class="priority medium">🟡 Mittel</span></td>
+                            <td>15.02.2026</td>
+                            <td><span class="badge status-offen">Offen</span></td>
+                        </tr>
+                        <tr class="priority-medium">
+                            <td><input type="checkbox"></td>
+                            <td><strong>Support-Richtlinien verfassen</strong></td>
+                            <td>Anna Schmidt</td>
+                            <td>Prozesse</td>
+                            <td><span class="priority medium">🟡 Mittel</span></td>
+                            <td>20.02.2026</td>
+                            <td><span class="badge status-progress">In Bearbeitung</span></td>
+                        </tr>
+                        <tr class="priority-low">
+                            <td><input type="checkbox" checked></td>
+                            <td><strong>FAQ Bereich aktualisieren</strong></td>
+                            <td>Max Müller</td>
+                            <td>Knowledge Base</td>
+                            <td><span class="priority low">🟢 Niedrig</span></td>
+                            <td>25.02.2026</td>
+                            <td><span class="badge status-erledigt">Erledigt</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ZEITSTRAHL / GANTT PREVIEW -->
+            <section class="panel" style="margin-top: 2rem;">
+                <div class="panel-header">
+                    <h3>Zeitstrahl der Aufgaben</h3>
+                </div>
+                <div class="panel-body">
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Aufgaben nach Fälligkeitsdatum</p>
+                    <div class="timeline">
+                        <div class="timeline-item timeline-today">
+                            <span class="date">28.01.2026 (heute)</span>
+                            <div class="tasks-in-date">
+                                <span class="task-tag priority-high">LED-Test</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="date">05.02.2026</span>
+                            <div class="tasks-in-date">
+                                <span class="task-tag priority-high">PC-Labor Update</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="date">15.02.2026</span>
+                            <div class="tasks-in-date">
+                                <span class="task-tag priority-medium">Netzwerk-Doku</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- NEUE AUFGABE MODAL -->
+    <div id="taskModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Neue Aufgabe erstellen</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="newTaskForm">
+                    <div class="form-group">
+                        <label for="taskTitle">Titel:</label>
+                        <input type="text" id="taskTitle" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskDescription">Beschreibung:</label>
+                        <textarea id="taskDescription" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskAssignee">Zuständig:</label>
+                            <select id="taskAssignee" required>
+                                <option value="">-- Wählen --</option>
+                                <option value="sophie">Sophie Klein</option>
+                                <option value="tom">Tom Fischer</option>
+                                <option value="lucas">Lucas Weber</option>
+                                <option value="anna">Anna Schmidt</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskProject">Projekt:</label>
+                            <select id="taskProject" required>
+                                <option value="">-- Wählen --</option>
+                                <option value="event">Event Feb 2026</option>
+                                <option value="hardware">Hardware Upgrade</option>
+                                <option value="dok">Dokumentation</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskPriority">Priorität:</label>
+                            <select id="taskPriority" required>
+                                <option value="niedrig">🟢 Niedrig</option>
+                                <option value="mittel">🟡 Mittel</option>
+                                <option value="hoch">🔴 Hoch</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="taskDeadline">Fälligkeitsdatum:</label>
+                            <input type="date" id="taskDeadline" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="taskCancel">Abbrechen</button>
+                <button class="btn btn-primary" id="taskSubmit">Aufgabe erstellen</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+    // ============================
+    // AUFGABENVERWALTUNG
+    // ============================
+
+    protectPage();
+    updateUserUI();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const modalCloseBtn = document.querySelector('.modal-close');
+        const newTaskBtn = document.getElementById('newTaskBtn');
+        const taskModal = document.getElementById('taskModal');
+        const taskCancel = document.getElementById('taskCancel');
+        const taskSubmit = document.getElementById('taskSubmit');
+
+        // Sidebar Toggle
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                sidebar.classList.toggle('collapsed');
+            });
+        }
+
+        // Close sidebar on click outside
+        document.addEventListener('click', function(e) {
+            if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                sidebar.classList.remove('collapsed');
+            }
+        });
+
+        // Logout button
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                if (confirm('Möchten Sie sich wirklich abmelden?')) {
+                    // Logout logic
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+
+        // Modal close button
+        if (modalCloseBtn) {
+            modalCloseBtn.addEventListener('click', function() {
+                taskModal.style.display = 'none';
+            });
+        }
+
+        if (newTaskBtn) {
+            newTaskBtn.addEventListener('click', function() {
+                taskModal.style.display = 'flex';
+            });
+        }
+
+        if (taskCancel) {
+            taskCancel.addEventListener('click', function() {
+                taskModal.style.display = 'none';
+            });
+        }
+
+        if (taskSubmit) {
+            taskSubmit.addEventListener('click', function() {
+                const title = document.getElementById('taskTitle').value;
+                const assignee = document.getElementById('taskAssignee').value;
+                const project = document.getElementById('taskProject').value;
+                const deadline = document.getElementById('taskDeadline').value;
+
+                if (!title || !assignee || !project || !deadline) {
+                    alert('Bitte füllen Sie alle erforderlichen Felder aus.');
+                    return;
+                }
+
+                alert('✓ Aufgabe erstellt!\n' + title + '\n👤 Zugewiesen an: ' + assignee + '\n📅 Fällig: ' + deadline);
+                taskModal.style.display = 'none';
+                document.getElementById('newTaskForm').reset();
+            });
+        }
+
+        // Filter functionality
+        const searchTasks = document.getElementById('searchTasks');
+        const priorityFilter = document.getElementById('priorityFilter');
+        const assigneeFilter = document.getElementById('assigneeFilter');
+
+        [searchTasks, priorityFilter, assigneeFilter].forEach(filter => {
+            if (filter) {
+                filter.addEventListener('change', filterTasks);
+                filter.addEventListener('keyup', filterTasks);
+            }
+        });
+
+        // Close modal on outside click
+        taskModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+    });
+
+    function filterTasks() {
+        const searchTerm = document.getElementById('searchTasks')?.value.toLowerCase() || '';
+        const priorityFilter = document.getElementById('priorityFilter')?.value || '';
+        const assigneeFilter = document.getElementById('assigneeFilter')?.value || '';
+        const rows = document.querySelectorAll('.admin-table tbody tr');
+
+        rows.forEach(row => {
+            let visible = true;
+
+            if (searchTerm) {
+                const text = row.textContent.toLowerCase();
+                visible = text.includes(searchTerm);
+            }
+
+            if (priorityFilter && visible) {
+                const priority = row.querySelector('.priority')?.textContent.toLowerCase() || '';
+                visible = priority.includes(priorityFilter);
+            }
+
+            row.style.display = visible ? '' : 'none';
+        });
+    }
+
+    function updateUserUI() {
+        // Update user info in sidebar
+        const userNameEl = document.querySelector('.user-name');
+        const userRoleEl = document.querySelector('.user-role');
+        
+        if (userNameEl && userRoleEl) {
+            const userJSON = localStorage.getItem('currentUser');
+            const userData = userJSON ? JSON.parse(userJSON) : null;
+            if (userData) {
+                userNameEl.textContent = userData.name || 'Benutzer';
+                userRoleEl.textContent = userData.role === 'admin' ? '👑 Administrator' : userData.role === 'teamleiter' ? '👔 Teamleiter' : userData.role === 'support' ? '🛠️ Support' : userData.role === 'technik' ? '⚡ Technik' : '👤 Benutzer';
+            } else {
+                userNameEl.textContent = 'Benutzer';
+                userRoleEl.textContent = '👤 Nicht angemeldet';
+            }
+        }
+
+        // Show/hide admin section based on role
+        const adminSection = document.getElementById('admin-section');
+        const userData = JSON.parse(localStorage.getItem('user') || '{"role":"user"}');
+        if (adminSection) {
+            adminSection.style.display = userData.role === 'admin' ? 'block' : 'none';
+        }
+    }
+    </script>
+    <script src="js/aufgaben.js"></script>
+</body>
+</html>
