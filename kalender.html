@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kalender</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js/auth.js"></script>
+    <script src="js/kalender.js"></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Kalender</h1>
+        <p>Monatsansicht mit Terminen der AGs. Klick auf einen Tag, um Termine anzusehen oder hinzuzufügen.</p>
+
+        <div class="calendar-wrap">
+            <div class="calendar-header">
+                <div>
+                    <button id="backHome" class="btn">← Zurück</button>
+                    <button id="prevMonth" class="btn">‹</button>
+                </div>
+                <h2 id="monthYear">Monat Jahr</h2>
+                <div>
+                    <button id="nextMonth" class="btn">›</button>
+                </div>
+            </div>
+
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- Weekday headings -->
+            </div>
+
+            <div id="eventsList" class="events-list" aria-live="polite"></div>
+        </div>
+
+        <!-- Add / View Event Modal -->
+        <div id="eventModal" class="modal" style="display:none;">
+            <div class="modal-content small">
+                <div class="modal-header">
+                    <h3 id="modalTitle">Termin hinzufügen</h3>
+                    <button class="modal-close" id="modalClose">×</button>
+                </div>
+                <div class="modal-body">
+                    <form id="eventForm">
+                        <div class="form-group">
+                            <label for="eventDate">Datum</label>
+                            <input type="date" id="eventDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventTime">Uhrzeit</label>
+                            <input type="time" id="eventTime">
+                        </div>
+                        <div class="form-group">
+                            <label for="eventTitle">Titel</label>
+                            <input type="text" id="eventTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventAG">AG</label>
+                            <select id="eventAG">
+                                <option value="Allgemein">Allgemein</option>
+                                <option value="Computer Service AG">Computer Service AG</option>
+                                <option value="Technik AG">Technik AG</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventDesc">Beschreibung</label>
+                            <textarea id="eventDesc" rows="3"></textarea>
+                        </div>
+                    </form>
+
+                    <div id="loginNotice" style="display:none;color:#b71c1c;margin-top:10px;">
+                        Bitte <a href="login.html" style="color:#b71c1c;text-decoration:underline;">einloggen</a>, um Termine zu erstellen oder zu bearbeiten.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" id="deleteEvent" style="display:none;">Löschen</button>
+                    <button class="btn" id="saveEvent">Speichern</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+    .calendar-wrap{max-width:900px;margin:1.5rem auto}
+    .calendar-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem}
+    .calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+    .calendar-grid .weekday{padding:6px 8px;background:#f5f5f5;text-align:center;font-weight:600}
+    .day-cell{min-height:90px;padding:6px;border-radius:6px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,0.04);position:relative}
+    .day-number{font-weight:700;margin-bottom:6px}
+    .event-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+    .events-list{margin-top:1rem}
+    .modal.small .modal-content{max-width:520px}
+    </style>
+</body>
+</html>
