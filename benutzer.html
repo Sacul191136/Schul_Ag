@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benutzerverwaltung - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+</head>
+<body class="admin-page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-small">
+                <span>⚙️</span>
+                <span>Team Panel</span>
+            </div>
+            <button class="sidebar-toggle">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" data-role="all">
+                <span class="icon">📊</span>
+                <span class="label">Dashboard</span>
+            </a>
+            
+            <div class="nav-section" id="admin-section" data-role="admin">
+                <h3>Admin</h3>
+                
+                <a href="benutzer.html" class="nav-item active" data-role="admin">
+                    <span class="icon">👥</span>
+                    <span class="label">Benutzer</span>
+                </a>
+                
+                <a href="rollen.html" class="nav-item" data-role="admin">
+                    <span class="icon">🔑</span>
+                    <span class="label">Rollen & Rechte</span>
+                </a>
+                
+                <a href="einstellungen.html" class="nav-item" data-role="admin">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Einstellungen</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Verwaltung</h3>
+                <a href="tickets.html" class="nav-item" data-role="all">
+                    <span class="icon">🎫</span>
+                    <span class="label">Tickets</span>
+                </a>
+                <a href="aufgaben.html" class="nav-item" data-role="all">
+                    <span class="icon">✓</span>
+                    <span class="label">Aufgaben</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Weitere</h3>
+                <a href="index.html" class="nav-item" data-role="all">
+                    <span class="icon">🏠</span>
+                    <span class="label">Startseite</span>
+                </a>
+                <a href="wissensbereich.html" class="nav-item" data-role="all">
+                    <span class="icon">📚</span>
+                    <span class="label">Wissensbereich</span>
+                </a>
+                <a href="benachrichtigungen.html" class="nav-item" data-role="all">
+                    <span class="icon">🔔</span>
+                    <span class="label">Benachrichtigungen</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <span class="avatar">👤</span>
+                <div>
+                    <p class="user-name" id="userNameDisplay">Benutzer</p>
+                    <p class="user-role" id="userRoleDisplay">Nicht angemeldet</p>
+                </div>
+            </div>
+            <button id="logoutBtn" class="btn btn-small">Abmelden</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1>Benutzerverwaltung</h1>
+            <div class="topbar-right">
+                <button id="newUserBtn" class="btn btn-primary">+ Neuen Benutzer hinzufügen</button>
+            </div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <!-- FILTER -->
+            <section class="filter-bar">
+                <div style="display: flex; gap: 0.5rem; flex: 1;">
+                    <input type="text" id="searchUsers" placeholder="Nach Name, E-Mail oder AG suchen..." style="flex: 1;">
+                    <button id="searchBtn" class="btn btn-primary" style="padding: 0.5rem 1rem;">🔍 Suchen</button>
+                </div>
+                <select id="roleFilter" class="filter-select">
+                    <option value="">Rolle: Alle</option>
+                    <option value="admin">Administrator</option>
+                    <option value="teamleiter">Teamleiter</option>
+                    <option value="support">Support</option>
+                    <option value="technik">Technik</option>
+                    <option value="member">Mitglied</option>
+                </select>
+                <select id="agFilter" class="filter-select">
+                    <option value="">AG: Alle</option>
+                    <option value="computer">Computer Service AG</option>
+                    <option value="technik">Technik AG</option>
+                </select>
+            </section>
+
+            <!-- USERS TABLE -->
+            <section class="panel">
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>E-Mail</th>
+                                <th>AG</th>
+                                <th>Rolle</th>
+                                <th>Status</th>
+                                <th>Beigetreten</th>
+                                <th>Aktion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Admin User</strong></td>
+                                <td>admin@school.de</td>
+                                <td>Verwaltung</td>
+                                <td><span class="badge" style="background: #c41e3a; color: white;">👑 Admin</span></td>
+                                <td><span class="badge status-angenommen">🟢 Aktiv</span></td>
+                                <td>01.01.2026</td>
+                                <td><button class="btn btn-small btn-edit">Bearbeiten</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Support Team</strong></td>
+                                <td>support@school.de</td>
+                                <td>Computer Service AG</td>
+                                <td><span class="badge" style="background: #0066cc; color: white;">🛠️ Support</span></td>
+                                <td><span class="badge status-angenommen">🟢 Aktiv</span></td>
+                                <td>10.01.2026</td>
+                                <td><button class="btn btn-small btn-edit">Bearbeiten</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Technik Team</strong></td>
+                                <td>technik@school.de</td>
+                                <td>Technik AG</td>
+                                <td><span class="badge" style="background: #51cf66; color: white;">⚡ Technik</span></td>
+                                <td><span class="badge status-angenommen">🟢 Aktiv</span></td>
+                                <td>10.01.2026</td>
+                                <td><button class="btn btn-small btn-edit">Bearbeiten</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Team Leiter</strong></td>
+                                <td>leiter@school.de</td>
+                                <td>Technik AG</td>
+                                <td><span class="badge" style="background: #ff922b; color: white;">🎯 Teamleiter</span></td>
+                                <td><span class="badge status-angenommen">🟢 Aktiv</span></td>
+                                <td>15.01.2026</td>
+                                <td><button class="btn btn-small btn-edit">Bearbeiten</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- USER MODAL -->
+    <div id="userModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Benutzer bearbeiten</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <div class="form-group">
+                        <label for="userName">Name:</label>
+                        <input type="text" id="userName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userEmail">E-Mail:</label>
+                        <input type="email" id="userEmail" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="userRole">Rolle:</label>
+                            <select id="userRole" required>
+                                <option value="member">Mitglied</option>
+                                <option value="support">Support</option>
+                                <option value="technik">Technik</option>
+                                <option value="teamleiter">Teamleiter</option>
+                                <option value="admin">Administrator</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userAG">AG:</label>
+                            <select id="userAG" required>
+                                <option value="">-- Keine --</option>
+                                <option value="computer">Computer Service AG</option>
+                                <option value="technik">Technik AG</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userStatus">Status:</label>
+                        <select id="userStatus">
+                            <option value="aktiv">🟢 Aktiv</option>
+                            <option value="inaktiv">🟡 Inaktiv</option>
+                            <option value="gesperrt">🔴 Gesperrt</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="resetPassword"> Passwort zurücksetzen
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="userCancel">Abbrechen</button>
+                <button class="btn btn-danger" id="userDelete" style="margin-right: auto;">Löschen</button>
+                <button class="btn btn-primary" id="userSave">Speichern</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Protect page - only admin
+        protectPage(['admin']);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const newUserBtn = document.getElementById('newUserBtn');
+            const userModal = document.getElementById('userModal');
+            const userCancel = document.getElementById('userCancel');
+            const userSave = document.getElementById('userSave');
+            const searchBtn = document.getElementById('searchBtn');
+            const modalClose = document.querySelector('.modal-close');
+            
+            // Update user info in sidebar
+            updateUserUI();
+
+            // Sidebar toggle
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    sidebar.classList.toggle('active');
+                });
+            }
+
+            // Close sidebar on mobile when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.sidebar') && !e.target.closest('.sidebar-toggle')) {
+                    sidebar.classList.remove('active');
+                }
+            });
+
+            // Logout
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    if (confirm('Möchten Sie sich abmelden?')) {
+                        SessionManager.logout();
+                    }
+                });
+            }
+
+            // New user button
+            if (newUserBtn) {
+                newUserBtn.addEventListener('click', function() {
+                    document.getElementById('userForm').reset();
+                    userModal.style.display = 'flex';
+                });
+            }
+
+            // User modal controls
+            if (userCancel) {
+                userCancel.addEventListener('click', function() {
+                    userModal.style.display = 'none';
+                });
+            }
+
+            if (modalClose) {
+                modalClose.addEventListener('click', function() {
+                    userModal.style.display = 'none';
+                });
+            }
+
+            if (userSave) {
+                userSave.addEventListener('click', function() {
+                    alert('✓ Benutzer aktualisiert!');
+                    userModal.style.display = 'none';
+                });
+            }
+
+            // Search function
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function() {
+                    const searchTerm = document.getElementById('searchUsers').value;
+                    console.log('Suche nach:', searchTerm);
+                    alert('Suche nach: ' + searchTerm);
+                });
+            }
+
+            // Edit user
+            document.querySelectorAll('.btn-edit').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    document.getElementById('userName').value = row.cells[0].textContent;
+                    document.getElementById('userEmail').value = row.cells[1].textContent;
+                    userModal.style.display = 'flex';
+                });
+            });
+        });
+
+        // Update sidebar user info
+        function updateUserUI() {
+            const user = SessionManager.getCurrentUser();
+            if (!user) return;
+
+            const userNameDisplay = document.getElementById('userNameDisplay');
+            const userRoleDisplay = document.getElementById('userRoleDisplay');
+            
+            if (userNameDisplay) userNameDisplay.textContent = user.name;
+            if (userRoleDisplay) {
+                const roleLabels = {
+                    'admin': '👑 Administrator',
+                    'teamleiter': '🎯 Teamleiter',
+                    'support': '🛠️ Support',
+                    'technik': '⚡ Technik',
+                    'member': '👤 Mitglied'
+                };
+                userRoleDisplay.textContent = roleLabels[user.role] || user.role;
+            }
+
+            // Show/Hide admin elements based on role
+            const adminSections = document.querySelectorAll('[data-role]');
+            adminSections.forEach(element => {
+                const requiredRoles = element.getAttribute('data-role').split(',').map(r => r.trim());
+                if (requiredRoles.includes(user.role) || requiredRoles.includes('all')) {
+                    element.style.display = '';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
