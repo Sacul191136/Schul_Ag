@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rollen & Rechte - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+</head>
+<body class="admin-page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-small">
+                <span>⚙️</span>
+                <span>Team Panel</span>
+            </div>
+            <button class="sidebar-toggle">☰</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item" data-role="all">
+                <span class="icon">📊</span>
+                <span class="label">Dashboard</span>
+            </a>
+            
+            <div class="nav-section" id="admin-section" data-role="admin">
+                <h3>Admin</h3>
+                
+                <a href="benutzer.html" class="nav-item" data-role="admin">
+                    <span class="icon">👥</span>
+                    <span class="label">Benutzer</span>
+                </a>
+                
+                <a href="rollen.html" class="nav-item active" data-role="admin">
+                    <span class="icon">🔑</span>
+                    <span class="label">Rollen & Rechte</span>
+                </a>
+                
+                <a href="einstellungen.html" class="nav-item" data-role="admin">
+                    <span class="icon">⚙️</span>
+                    <span class="label">Einstellungen</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3>Weitere</h3>
+                <a href="index.html" class="nav-item" data-role="all">
+                    <span class="icon">🏠</span>
+                    <span class="label">Startseite</span>
+                </a>
+                <a href="wissensbereich.html" class="nav-item" data-role="all">
+                    <span class="icon">📚</span>
+                    <span class="label">Wissensbereich</span>
+                </a>
+                <a href="benachrichtigungen.html" class="nav-item" data-role="all">
+                    <span class="icon">🔔</span>
+                    <span class="label">Benachrichtigungen</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <span class="avatar">👤</span>
+                <div>
+                    <p class="user-name" id="userNameDisplay">Benutzer</p>
+                    <p class="user-role" id="userRoleDisplay">Rolle</p>
+                </div>
+            </div>
+            <button id="logoutBtn" class="btn btn-small">Abmelden</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1>Rollen & Rechte Management</h1>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <!-- ROLLEN GRID -->
+            <section class="projects-grid">
+                <!-- ADMIN ROLE -->
+                <div class="project-card">
+                    <div class="project-header" style="background: linear-gradient(135deg, #c41e3a 0%, #9b0000 100%);">
+                        <h3>👑 Administrator</h3>
+                    </div>
+                    <div class="project-body">
+                        <p style="color: #666; margin-bottom: 1rem;">Vollständiger Zugriff auf alle Systemfunktionen</p>
+                        
+                        <div style="background: #f9f9f9; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                            <h4 style="margin-top: 0;">Rechte:</h4>
+                            <ul style="margin: 0; padding-left: 1.5rem;">
+                                <li>✓ Benutzer verwalten</li>
+                                <li>✓ Rollen zuweisen</li>
+                                <li>✓ Alle Tickets einsehen</li>
+                                <li>✓ Bewerbungen freigeben</li>
+                                <li>✓ Systemeinstellungen ändern</li>
+                                <li>✓ Berichte einsehen</li>
+                            </ul>
+                        </div>
+                        <p style="font-size: 0.85rem; color: #999;">Aktuell: <strong>1 Benutzer</strong></p>
+                    </div>
+                </div>
+
+                <!-- TEAMLEITER ROLE -->
+                <div class="project-card">
+                    <div class="project-header" style="background: linear-gradient(135deg, #0066cc 0%, #004fa3 100%);">
+                        <h3>🎯 Teamleiter</h3>
+                    </div>
+                    <div class="project-body">
+                        <p style="color: #666; margin-bottom: 1rem;">Leitung einer AG und Ticket-Verwaltung</p>
+                        
+                        <div style="background: #f9f9f9; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                            <h4 style="margin-top: 0;">Rechte:</h4>
+                            <ul style="margin: 0; padding-left: 1.5rem;">
+                                <li>✓ Bewerbungen bearbeiten</li>
+                                <li>✓ Tickets zuweisen</li>
+                                <li>✓ Aufgaben erstellen</li>
+                                <li>✓ Team-Reports einsehen</li>
+                                <li>✗ Systemeinstellungen</li>
+                            </ul>
+                        </div>
+                        <p style="font-size: 0.85rem; color: #999;">Aktuell: <strong>2 Benutzer</strong></p>
+                    </div>
+                </div>
+
+                <!-- SUPPORT ROLE -->
+                <div class="project-card">
+                    <div class="project-header" style="background: linear-gradient(135deg, #ffc107 0%, #e67700 100%);">
+                        <h3>🛠️ Support</h3>
+                    </div>
+                    <div class="project-body">
+                        <p style="color: #666; margin-bottom: 1rem;">Bearbeitung von Support-Tickets</p>
+                        
+                        <div style="background: #f9f9f9; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                            <h4 style="margin-top: 0;">Rechte:</h4>
+                            <ul style="margin: 0; padding-left: 1.5rem;">
+                                <li>✓ Eigene Tickets sehen</li>
+                                <li>✓ Tickets bearbeiten</li>
+                                <li>✓ Kommentare hinzufügen</li>
+                                <li>✓ Aufgaben anschauen</li>
+                                <li>✗ Tickets zuweisen</li>
+                            </ul>
+                        </div>
+                        <p style="font-size: 0.85rem; color: #999;">Aktuell: <strong>5 Benutzer</strong></p>
+                    </div>
+                </div>
+
+                <!-- TECHNIK ROLE -->
+                <div class="project-card">
+                    <div class="project-header" style="background: linear-gradient(135deg, #51cf66 0%, #2b8a3e 100%);">
+                        <h3>⚡ Technik</h3>
+                    </div>
+                    <div class="project-body">
+                        <p style="color: #666; margin-bottom: 1rem;">Spezialist für technische Aufgaben</p>
+                        
+                        <div style="background: #f9f9f9; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                            <h4 style="margin-top: 0;">Rechte:</h4>
+                            <ul style="margin: 0; padding-left: 1.5rem;">
+                                <li>✓ Technische Tickets sehen</li>
+                                <li>✓ Tickets bearbeiten</li>
+                                <li>✓ Wissensbereich nutzen</li>
+                                <li>✓ Aufgaben anschauen</li>
+                                <li>✗ Benutzer verwalten</li>
+                            </ul>
+                        </div>
+                        <p style="font-size: 0.85rem; color: #999;">Aktuell: <strong>3 Benutzer</strong></p>
+                    </div>
+                </div>
+
+                <!-- MITGLIED ROLE -->
+                <div class="project-card">
+                    <div class="project-header" style="background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);">
+                        <h3>👤 Mitglied</h3>
+                    </div>
+                    <div class="project-body">
+                        <p style="color: #666; margin-bottom: 1rem;">Basis-Zugriff für AG-Mitglieder</p>
+                        
+                        <div style="background: #f9f9f9; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                            <h4 style="margin-top: 0;">Rechte:</h4>
+                            <ul style="margin: 0; padding-left: 1.5rem;">
+                                <li>✓ Profil bearbeiten</li>
+                                <li>✓ Tickets anschauen</li>
+                                <li>✓ Eigene Aufgaben sehen</li>
+                                <li>✓ Wissensbereich lesen</li>
+                                <li>✗ Tickets zuweisen</li>
+                            </ul>
+                        </div>
+                        <p style="font-size: 0.85rem; color: #999;">Aktuell: <strong>12 Benutzer</strong></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RIGHTS MATRIX -->
+            <section class="panel" style="margin-top: 2rem;">
+                <div class="panel-header">
+                    <h3>Detaillierte Rechte-Matrix</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="admin-table" style="font-size: 0.9rem;">
+                        <thead>
+                            <tr>
+                                <th>Funktion</th>
+                                <th>Admin</th>
+                                <th>Teamleiter</th>
+                                <th>Support</th>
+                                <th>Technik</th>
+                                <th>Mitglied</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Bewerbungen einsehen</strong></td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bewerbungen ändern</strong></td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tickets erstellen</strong></td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tickets bearbeiten</strong></td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✗</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Benutzer verwalten</strong></td>
+                                <td>✓</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Systemeinstellungen</strong></td>
+                                <td>✓</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                                <td>✗</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reports einsehen</strong></td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✗</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Protect page - only admin
+        protectPage(['admin']);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const logoutBtn = document.getElementById('logoutBtn');
+            
+            // Update user info in sidebar
+            updateUserUI();
+
+            // Sidebar toggle
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    sidebar.classList.toggle('active');
+                });
+            }
+
+            // Close sidebar on mobile when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.sidebar') && !e.target.closest('.sidebar-toggle')) {
+                    sidebar.classList.remove('active');
+                }
+            });
+
+            // Logout
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    if (confirm('Möchten Sie sich abmelden?')) {
+                        SessionManager.logout();
+                    }
+                });
+            }
+        });
+
+        // Update sidebar user info
+        function updateUserUI() {
+            const user = SessionManager.getCurrentUser();
+            if (!user) return;
+
+            const userNameDisplay = document.getElementById('userNameDisplay');
+            const userRoleDisplay = document.getElementById('userRoleDisplay');
+            
+            if (userNameDisplay) userNameDisplay.textContent = user.name;
+            if (userRoleDisplay) {
+                const roleLabels = {
+                    'admin': '👑 Administrator',
+                    'teamleiter': '🎯 Teamleiter',
+                    'support': '🛠️ Support',
+                    'technik': '⚡ Technik',
+                    'member': '👤 Mitglied'
+                };
+                userRoleDisplay.textContent = roleLabels[user.role] || user.role;
+            }
+
+            // Show/Hide admin elements based on role
+            const adminSections = document.querySelectorAll('[data-role]');
+            adminSections.forEach(element => {
+                const requiredRoles = element.getAttribute('data-role').split(',').map(r => r.trim());
+                if (requiredRoles.includes(user.role) || requiredRoles.includes('all')) {
+                    element.style.display = '';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
