@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Computer Service AG - IT-Support und Wartung für die Schule">
+    <title>Computer Service AG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">⚙️</span>
+                <span>AG's der Schule</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="about.html">Über uns</a></li>
+                    <li class="active"><a href="computer-service-ag.html">Computer Service AG</a></li>
+                    <li><a href="technik.html">Technik AG</a></li>
+                    <li><a href="projects.html">Projekte</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="join.html">Mitmachen</a></li>
+                    <li><a href="wiki.html">Wissensdatenbank</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="sitemap.html">Sitemap</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>💻 Computer Service AG</h1>
+        <p>Die IT-Werkstatt deiner Schule</p>
+    </div>
+
+    <div class="container">
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb">
+            <a href="index.html">Startseite</a> / Computer Service AG
+        </div>
+
+        <section class="content">
+            <h2>Was ist die Computer Service AG?</h2>
+            <p>
+                Die <strong>Computer Service AG</strong> ist das technische Rückgrat der Schule. Wir sind ein engagiertes Team von 
+                Schülerinnen und Schülern, die sich um die IT-Infrastruktur kümmern. Wir unterstützen Lehrkräfte, Schüler und die 
+                Schulleitung bei technischen Herausforderungen – von der Fehlersuche bis zur regelmäßigen Wartung.
+            </p>
+
+            <h2>🎯 Unsere Aufgabenbereiche</h2>
+            <ul>
+                <li><strong>IT-Support:</strong> Schnelle Hilfe bei technischen Problemen für Lehrkräfte und Schüler</li>
+                <li><strong>Hardware-Wartung:</strong> Reparatur und Wartung von Computern, Laptops und Druckern</li>
+                <li><strong>Software-Management:</strong> Installation und Updates von Programmen</li>
+                <li><strong>Netzwerk-Support:</strong> Unterstützung bei Verbindungsproblemen</li>
+                <li><strong>Benutzerverwaltung:</strong> Verwaltung von Schüler- und Lehrkräfte-Konten</li>
+                <li><strong>Datensicherung:</strong> Regelmäßige Backups und Sicherung wichtiger Daten</li>
+            </ul>
+
+            <h2>📋 Typische Arbeitsabläufe</h2>
+            <p><strong>Montag & Mittwoch: Offene Sprechstunde</strong></p>
+            <p>Während der offenen Sprechstunde könnt ihr zu uns kommen und eure technischen Probleme schildern. 
+               Wir versuchen, sie gleich zu lösen oder planen einen Termin zur detaillierteren Bearbeitung.</p>
+
+            <p><strong>Dienstag & Donnerstag: Interne Arbeitszeiten</strong></p>
+            <p>Wir arbeiten an laufenden Projekten, führen Wartungen durch und lösen komplexere Probleme.</p>
+
+            <p><strong>Freitag: Teamarbeit & Planung</strong></p>
+            <p>Gemeinsam besprechen wir neue Projekte, planen Wartungsarbeiten und tauschen unser Wissen aus.</p>
+
+            <h2>🚀 Aktuelle Projekte</h2>
+            <ul>
+                <li>Migration auf neue Schulverwaltungssoftware</li>
+                <li>Aufbau einer Testumgebung für neue Software</li>
+                <li>Optimierung des Netzwerk-Setups in Klassenzimmern</li>
+                <li>Dokumentation aller IT-Systeme</li>
+                <li>Schulung von Lehrkräften zu neuer Software</li>
+            </ul>
+
+            <h2>🎓 Was lernst du bei uns?</h2>
+            <ul>
+                <li>Fehlerdiagnose und Problemlösung</li>
+                <li>Hardware- und Software-Grundlagen</li>
+                <li>Netzwerkadministration</li>
+                <li>Betriebssysteme (Windows, macOS, Linux)</li>
+                <li>Teamfähigkeit und Kommunikation</li>
+                <li>Dokumentation und Wissensverwaltung</li>
+            </ul>
+
+            <h2>📞 Kontakt & Sprechzeiten</h2>
+            <table>
+                <tr>
+                    <th>Tag</th>
+                    <th>Zeit</th>
+                    <th>Ort</th>
+                    <th>Typ</th>
+                </tr>
+                <tr>
+                    <td>Dienstag</td>
+                    <td>1. Große Pause</td>
+                    <td>IT-Raum 115</td>
+                    <td>Offene Sprechstunde</td>
+                </tr>
+                <tr>
+                    <td>Donnerstag</td>
+                    <td>2. Große Pause</td>
+                    <td>IT-Raum 115</td>
+                    <td>Offene Sprechstunde</td>
+                </tr>
+            </table>
+
+            <div style="margin-top: 2rem; padding: 2rem; background: #e8f4f8; border-radius: 10px; border-left: 5px solid #0066cc;">
+                <h3 style="color: #0066cc; margin-top: 0;">💡 Hast du Interesse?</h3>
+                <p>Du möchtest Teil der Computer Service AG werden? Kein Problem!</p>
+                <a href="join.html" class="btn btn-primary" style="display: inline-block; margin-top: 1rem;">Jetzt anmelden!</a>
+            </div>
+        </section>
+
+        <section class="content">
+            <h2>✅ Häufig gestellte Fragen (FAQ)</h2>
+            
+            <h3>Brauche ich Vorkenntnisse?</h3>
+            <p>Nein, aber du solltest Interesse an Technik haben und bereit sein zu lernen.</p>
+
+            <h3>Wie viel Zeit muss ich investieren?</h3>
+            <p>Das ist flexibel. Du kannst an Sprechstunden teilnehmen oder dich stärker einbringen – je nach deinem Zeitbudget.</p>
+
+            <h3>Kann ich später bei der Anmeldung helfen?</h3>
+            <p>Ja! Du kannst uns während der Sprechstunden direkt ansprechen.</p>
+
+            <h3>Wird meine Leistung benotet?</h3>
+            <p>Die AG ist ein freiwilliges Angebot und wird nicht benotet, aber du kannst deine Teilnahme bescheinigen lassen.</p>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>🎯 AG's der Schule</h4>
+                <p>Computer Service AG & Technik AG – Zentrale Plattform der Schulwerkstätten</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Startseite</a></li>
+                    <li><a href="about.html">Über uns</a></li>
+                    <li><a href="projects.html">Projekte</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>AG's</h4>
+                <ul>
+                    <li><a href="computer-service-ag.html">Computer Service AG</a></li>
+                    <li><a href="technik.html">Technik AG</a></li>
+                    <li><a href="join.html">Mitmachen</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontakt & Support</h4>
+                <ul>
+                    <li><a href="contact.html">Kontaktformular</a></li>
+                    <li><a href="support.html">Support-Anfrage</a></li>
+                    <li>📍 Schule [Adresse]</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AG's der Schule. Alle Rechte vorbehalten. | <a href="#" style="color: #999;">Datenschutz</a> | <a href="#" style="color: #999;">Impressum</a></p>
+        </div>
+    </footer>
+</body>
+</html>
