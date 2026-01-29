@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrierung - Team Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <span class="logo-icon">📝</span>
+                <h1>Bewerbung / Registrierung</h1>
+                <p>AG's der Schule - Dein Einstieg</p>
+            </div>
+            
+            <form id="registrationForm" class="login-form">
+                <div class="form-group">
+                    <label for="fullName">Vollständiger Name:</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="z.B. Max Müller">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-Mail:</label>
+                    <input type="email" id="email" name="email" required placeholder="deine.email@school.de">
+                </div>
+
+                <div class="form-group">
+                    <label for="klasse">Klasse:</label>
+                    <input type="text" id="klasse" name="klasse" required placeholder="z.B. 9a">
+                </div>
+
+                <div class="form-group">
+                    <label for="wunschAG">Wunsch-AG:</label>
+                    <select id="wunschAG" name="wunschAG" required>
+                        <option value="">-- Bitte wählen --</option>
+                        <option value="computer">Computer Service AG</option>
+                        <option value="technik">Technik AG</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivation">Motivation (warum willst du beitreten?):</label>
+                    <textarea id="motivation" name="motivation" rows="4" required placeholder="Schreib hier, warum dich die AG interessiert..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="vorkenntnisse">Vorkenntnisse:</label>
+                    <textarea id="vorkenntnisse" name="vorkenntnisse" rows="3" placeholder="Was kannst du schon? (optional)"></textarea>
+                </div>
+
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                    <label for="agreeTerms">Ich akzeptiere die Datenschutzerklärung</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Bewerbung absenden</button>
+            </form>
+
+            <div class="login-footer">
+                <a href="login.html">Bereits registriert? Jetzt anmelden</a>
+                <span>|</span>
+                <a href="index.html">Zurück zur Startseite</a>
+            </div>
+
+            <div class="login-info">
+                <p><strong>📋 Nächste Schritte:</strong></p>
+                <ul>
+                    <li>✓ Bewerbung absenden</li>
+                    <li>⏳ Admin prüft deine Bewerbung (1-3 Tage)</li>
+                    <li>📧 Du erhältst eine E-Mail mit dem Ergebnis</li>
+                    <li>🎉 Bei Annahme: Login-Daten erhalten</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const registrationForm = document.getElementById('registrationForm');
+            
+            if (registrationForm) {
+                registrationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const fullName = document.getElementById('fullName').value;
+                    const email = document.getElementById('email').value;
+                    const klasse = document.getElementById('klasse').value;
+                    const wunschAG = document.getElementById('wunschAG').value;
+                    const motivation = document.getElementById('motivation').value;
+
+                    if (!fullName || !email || !klasse || !wunschAG || !motivation) {
+                        alert('Bitte füllen Sie alle erforderlichen Felder aus.');
+                        return;
+                    }
+
+                    // Show success message
+                    const successMsg = document.createElement('div');
+                    successMsg.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #51cf66; color: white; padding: 1.5rem; border-radius: 6px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); z-index: 10000; max-width: 400px; text-align: center;';
+                    successMsg.innerHTML = '<h3 style="margin: 0 0 0.5rem;">✓ Bewerbung erhalten!</h3><p style="margin: 0;">Vielen Dank, ' + fullName + '!<br>Wir überprüfen deine Bewerbung und melden uns in Kürze.</p>';
+                    document.body.appendChild(successMsg);
+
+                    // Reset form
+                    registrationForm.reset();
+
+                    // Redirect after 3 seconds
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 3000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
